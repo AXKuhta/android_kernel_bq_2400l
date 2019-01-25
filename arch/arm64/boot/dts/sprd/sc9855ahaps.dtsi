@@ -1,0 +1,67 @@
+/*
+ * Spreadtrum SC9855AHaps SoC DTS file
+ *
+ * Copyright (C) 2017, Spreadtrum Communications Inc.
+ *
+ * This file is licensed under a dual GPLv2 or X11 license.
+ */
+
+#include "sharkl3.dtsi"
+#include "sc9855a-clocks.dtsi"
+
+/ {
+	cpus {
+		#address-cells = <2>;
+		#size-cells = <0>;
+
+		cpu-map {
+			cluster0 {
+				core0 {
+					cpu = <&CPU0>;
+				};
+			};
+		};
+
+		CPU0: cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a55","arm,armv8";
+			reg = <0x0 0x0>;
+			enable-method = "spin-table";
+		};
+
+	};
+
+	gic: interrupt-controller@14000000 {
+		compatible = "arm,gic-v3";
+		#interrupt-cells = <3>;
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+		redistributor-stride = <0x0 0x20000>;	// 128KB stride
+		#redistributor-regions = <1>;
+		interrupt-controller;
+		reg = <0x0 0x14000000 0 0x20000>,	// GICD
+			<0x0 0x14040000 0 0x100000>;	// GICR
+		interrupts = <1 9 4>;
+		v2m_0: v2m@0 {
+			compatible = "arm,gic-v2m-frame";
+			msi-controller;
+			reg = <0 0 0 0x1000>;
+		};
+	};
+
+	timer {
+		compatible = "arm,armv8-timer";
+		interrupts = <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4)
+					 | IRQ_TYPE_LEVEL_LOW)>,
+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4)
+					 | IRQ_TYPE_LEVEL_LOW)>;
+		clock-frequency = <26000000>;
+	};
+};
+
+&sdio3 {
+	clock-names = "sdio_clk_source",
+		"sdio_ahb_enable";
+	clocks = <&ext_26m>,<&clk_ap_ahb_gates0 11>;
+};

@@ -1,0 +1,1 @@
+obj-$(CONFIG_SPRD_CAMERA_ISP_R6P11) += isp_r6p11/

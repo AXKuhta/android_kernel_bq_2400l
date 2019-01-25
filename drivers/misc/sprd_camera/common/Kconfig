@@ -1,0 +1,7 @@
+
+config SPRD_CAM_PW_DOMAIN_R5P0
+	bool "Spreadtrum Camera Power Domain R5P0"
+	depends on SPRD_CAMERA
+	help
+	    This is a power domain driver for cam & dispc sys.
+

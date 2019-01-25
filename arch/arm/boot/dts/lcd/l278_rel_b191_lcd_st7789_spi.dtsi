@@ -1,0 +1,67 @@
+/ { lcds {
+	lcd_st7789: lcd7789@7789 {
+
+		panel-name = "lcd_st7789";
+		status = <0>;
+		if-type = <4>;
+		spi_bus_num = <1>;
+		spi_cs = <0>;
+		bpp = <16>;
+		fps = <33>;
+		spi_mode = <3>; /* SPI_CPHA 0x01 SPI_CPOL 0x02 */
+		spi_cd_gpio = <91>;
+		spi_te_gpio = <51>;
+		spi_pol_mode = <0>;
+		spi_endian = <0>;
+		spi_freq = <48000000>;
+		hactive = <240>;
+		vactive = <320>;
+
+		power-on-sequence = <
+					50  1  5
+					50  0  5
+					50  1  20
+					>;
+		power-off-sequence = <
+					50  0  20
+					>;
+
+		init-data = [
+		
+			
+			ff 78 00 01 11
+			ff 00 00 02 36 00
+			ff 00 00 02 3A 05
+			ff 00 00 02 35 00
+			ff 00 00 03 44 00 00
+			ff 00 00 06 B2 4C 4C 00 33 33
+			ff 00 00 02 B7 75   
+			ff 00 00 02 BB 13   
+			ff 00 00 02 C0 2C   
+			ff 00 00 02 C2 01   
+			ff 00 00 02 C3 17   
+			ff 00 00 02 C4 20   
+			ff 00 00 02 C6 0f   
+			ff 00 00 03 D0 A4 A1
+			ff 00 00 0f E0 D0 0B 10 0C 0D 08 36 3A 47 3A 17 16 17 1A   
+			ff 00 00 0f E1 D0 0C 10 0D 0D 08 35 5E 46 3B 16 15 17 1A   
+			ff 20 00 01 29
+			ff 00 00 01 2C
+			];
+		sleep-in = [
+			ff 78 00 01 28
+			ff 20 00 01 10
+			];
+		sleep-out = [
+			ff 20 00 01 11
+			ff 78 00 01 29
+			];
+		enable-te = [
+			ff 00 00 02 35 00
+			];
+		disable-te = [
+			ff 00 00 01 34
+			];
+	};
+};};
+

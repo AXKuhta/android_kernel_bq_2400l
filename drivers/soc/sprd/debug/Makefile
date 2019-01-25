@@ -1,0 +1,9 @@
+obj-$(CONFIG_SPRD_DEBUG)    += sprd_debugfs_frame.o
+obj-$(CONFIG_LOOK_AT) += sprd_lookat.o
+obj-y	+= busmonitor/
+obj-$(CONFIG_SPRD_CPU_USAGE) += cpu_usage/
+obj-$(CONFIG_SPRD_EIRQSOFF)     += eirqsoff/
+obj-y	+= dmc_mpu/
+obj-$(CONFIG_SPRD_LAST_REGS)    += last_regs/
+obj-$(CONFIG_IODEBUG)	+= iodebug/
+obj-$(CONFIG_SPRD_PERFORMANCE_CHECKER)   += dumpregister/

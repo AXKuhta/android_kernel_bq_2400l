@@ -1,0 +1,77 @@
+/ { lcds {
+	lcd_gc9306: lcd329306@9306 {
+
+		panel-name = "gc9306_32";
+		status = <1>;
+		if-type = <4>;
+		spi_bus_num = <1>;
+		spi_cs = <0>;
+		bpp = <16>;
+		fps = <33>;
+		spi_mode = <3>; /* SPI_CPHA 0x01 SPI_CPOL 0x02 */
+		spi_cd_gpio = <91>;
+		spi_te_gpio = <51>;
+		spi_pol_mode = <0>;
+		spi_endian = <0>;
+		spi_freq = <48000000>;
+		hactive = <240>;
+		vactive = <320>;
+
+		power-on-sequence = <
+					50  1  5
+					50  0  5
+					50  1  20
+					>;
+		power-off-sequence = <
+					50  0  20
+					>;
+		
+		init-data = [
+				ff 00 00 01 fe
+				ff 00 00 01 ef
+				ff 00 00 02 36 48
+				ff 00 00 02 3a 05
+				ff 00 00 02 35 00
+				ff 00 00 03 a4 44 44
+				ff 00 00 03 a5 42 42
+				ff 00 00 03 aa 88 88
+				ff 00 00 03 e8 11 72
+				ff 00 00 03 e3 01 10
+				ff 00 00 02 ff 61
+				ff 00 00 02 AC 00
+				ff 00 00 02 ad 33
+				ff 00 00 02 ae 2b
+				ff 00 00 02 Af 55
+				ff 00 00 03 a6 2a 2a
+				ff 00 00 03 a7 2b 2b
+				ff 00 00 03 a8 18 18
+				ff 00 00 03 a9 2a 2a
+				ff 00 00 05 2a 00 00 00 ef
+				ff 00 00 05 2b 00 00 01 3f
+				ff 00 00 07 F0 02 00 00 02 06 00
+				ff 00 00 07 F1 01 02 00 05 16 16
+				ff 00 00 07 F2 11 0a 38 04 04 49
+				ff 00 00 07 F3 0c 08 42 04 03 50
+				ff 00 00 07 F4 0C 18 17 1F 24 0f
+				ff 00 00 07 F5 06 12 12 20 24 0f
+				ff 78 00 01 11
+				ff 20 00 01 29
+				ff 00 00 01 2c
+		];
+		sleep-in = [
+			ff 78 00 01 28
+			ff 20 00 01 10
+			];
+		sleep-out = [
+			ff 20 00 01 11
+			ff 78 00 01 29
+			];
+		enable-te = [
+			ff 00 00 02 35 00
+			];
+		disable-te = [
+			ff 00 00 01 34
+			];
+	};
+};};
+

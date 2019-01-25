@@ -1,0 +1,1 @@
+obj-$(CONFIG_SPRD_CAMERA_CPP_LITE_R3P0) += lite_r3p0/
