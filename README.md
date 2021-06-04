@@ -4,7 +4,7 @@ BQ 2400L Kernel
 Building:
  - Make sure you have the neccessary packages installed: `build-essential bc bison flex libncurses-dev libssl-dev libelf-dev`
  - Download the appropriate toolchain: https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/+archive/refs/heads/ndk-release-r21.tar.gz
- - Unpack it in a folder somewhere: `tar -xf ndk-release-r22.tar.gz`
+ - Make a folder, unpack it there: `tar -xf ndk-release-r21.tar.gz`
  - Apply a small fix:
 
    ```
