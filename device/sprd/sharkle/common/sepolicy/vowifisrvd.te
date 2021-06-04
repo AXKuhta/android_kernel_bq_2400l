@@ -1,0 +1,39 @@
+type vowifisrvd, domain, mlstrustedsubject;
+type vowifisrvd_exec, exec_type, file_type;
+
+init_daemon_domain(vowifisrvd)
+
+allow vowifisrvd vowifisrvd:netlink_socket { create getopt setopt bind getattr setattr write read };
+allow vowifisrvd sysfs:file { create write read open getattr };
+allow vowifisrvd proc_net:file { write read open getattr };
+allow vowifisrvd vowifisrvd:udp_socket { create ioctl getopt setopt bind getattr setattr write read }; 
+allow vowifisrvd vowifisrvd:netlink_route_socket { create setopt bind getattr setattr write read nlmsg_read nlmsg_write };
+allow vowifisrvd vowifisrvd:netlink_generic_socket { create setopt bind getattr setattr write read };
+allow vowifisrvd vowifisrvd:capability { net_raw net_admin setuid };
+allow vowifisrvd shell_exec:file { read open execute execute_no_trans getattr };
+allow vowifisrvd toolbox_exec:file { getattr execute read open execute_no_trans };
+allow vowifisrvd vowifisrvd:rawip_socket { create getopt setopt bind read write };
+allow vowifisrvd system_file:file { execute_no_trans };
+allow vowifisrvd prod_file:dir getattr;
+allow vowifisrvd vowifisrvd:capability {dac_override dac_read_search};
+allow vowifisrvd storage_file:dir {search getattr read};
+allow vowifisrvd init_exec:file {getattr read open};
+allow vowifisrvd tun_device:chr_file write;
+allow vowifisrvd storage_file:lnk_file read;
+allow vowifisrvd vowifisrvd_file:file { create getattr write unlink read append open rename setattr };
+allow vowifisrvd vowifisrvd_file:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow vowifisrvd vowifisrvd:tcp_socket { getattr shutdown create ioctl getopt setopt };
+allow vowifisrvd socket_device:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow vowifisrvd socket_device:sock_file { create write read open getattr setattr unlink };
+allow vowifisrvd system_data_file:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow vowifisrvd system_data_file:file { open read };
+allow vowifisrvd ims_bridged:unix_stream_socket { connectto sendto read write };
+allow vowifisrvd port:udp_socket {name_bind node_bind };
+allow vowifisrvd port:tcp_socket {name_bind node_bind name_connect };
+allow vowifisrvd node:tcp_socket { node_bind };
+allow vowifisrvd node:udp_socket { node_bind };
+allow vowifisrvd node:rawip_socket { node_bind };
+allow vowifisrvd tty_device:chr_file { read write open ioctl };
+allow vowifisrvd fwmarkd_socket:sock_file { write };
+allow vowifisrvd netd:unix_stream_socket { connectto sendto read write };
+allow vowifisrvd vowifisrvd:tcp_socket { accept bind create getopt listen read setopt write connect };

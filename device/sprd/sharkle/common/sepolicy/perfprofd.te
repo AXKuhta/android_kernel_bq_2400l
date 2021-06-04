@@ -1,0 +1,2 @@
+# perfprofd uses the system log
+userdebug_or_eng(`write_ylogd(perfprofd);')

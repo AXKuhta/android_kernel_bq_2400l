@@ -1,0 +1,16 @@
+allow servicemanager zygote:dir search;
+allow servicemanager zygote:file { read open };
+allow servicemanager zygote:process getattr;
+
+allow servicemanager engpc:dir search;
+allow servicemanager engpc:file { read open };
+allow servicemanager engpc:process getattr;
+
+allow servicemanager servicemanager:capability sys_nice;
+allow servicemanager phasecheckserver:dir search;
+allow servicemanager phasecheckserver:file { read open };
+allow servicemanager phasecheckserver:process getattr;
+
+allow servicemanager ylog:dir {search};
+allow servicemanager ylog:file {read open};
+allow servicemanager ylog:process {getattr};

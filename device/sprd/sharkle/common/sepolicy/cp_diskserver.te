@@ -1,0 +1,16 @@
+type cp_diskserver, domain;
+type cp_diskserver_exec, exec_type, file_type;
+
+init_daemon_domain(cp_diskserver)
+
+allow cp_diskserver spipe_device:chr_file { open read write };
+allow cp_diskserver block_device:dir { search };
+allow cp_diskserver mmcblk_device:blk_file { open read write ioctl };
+allow cp_diskserver cp_diskserver:capability { dac_override };
+
+allow cp_diskserver sysfs:file write;
+allow cp_diskserver sysfs_wake_lock:file { open read write };
+
+allow cp_diskserver shell_exec:file { read open execute execute_no_trans getattr};
+
+allow cp_diskserver self:capability2 {block_suspend};

@@ -1,0 +1,19 @@
+type dhcp6c, domain;
+type dhcp6c_exec, exec_type, file_type;
+type dhcp6c_data_file, file_type, data_file_type;
+
+init_daemon_domain(dhcp6c)
+
+allow dhcp6c dhcp6c:udp_socket { ioctl create setopt getopt bind write read };
+allow dhcp6c dhcp6c:capability { dac_override dac_read_search net_raw net_admin net_bind_service };
+allow dhcp6c dhcp6c:netlink_route_socket { create };
+allow dhcp6c port:udp_socket { name_bind };
+allow dhcp6c node:udp_socket { node_bind };
+allow dhcp6c system_data_file:file { open ioctl };
+allow dhcp6c system_data_file:dir { write add_name };
+allow dhcp6c dhcp6c_data_file:dir { write search add_name };
+allow dhcp6c dhcp6c_data_file:file { read open getattr ioctl write };
+allow dhcp6c fwmarkd_socket:sock_file { write };
+allow dhcp6c netd:unix_stream_socket { connectto };
+allow dhcp6c dhcp6c:udp_socket { connect };
+

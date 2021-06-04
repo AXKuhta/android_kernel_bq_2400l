@@ -1,0 +1,22 @@
+allow netd kernel:system module_request;
+allow netd netd:capability { net_bind_service sys_module };
+allow netd init:socket { read write };
+
+allow netd init:tcp_socket { read write getopt setopt };
+allow netd dhcp6c:fd { use };
+allow netd dhcp6c:udp_socket { read write getopt setopt };
+allow netd slogmodem:fd { use };
+allow netd slogmodem:tcp_socket { getopt read setopt write };
+allow netd ylog:fd { use };
+allow netd ylog:tcp_socket { read write getopt setopt };
+allow netd wcnd:fd { use };
+allow netd wcnd:tcp_socket { read write getopt setopt };
+allow netd slogmodem:fd { use };
+allow netd slogmodem:tcp_socket { getopt read setopt write };
+allow netd engpc:tcp_socket { read write getopt setopt};
+allow netd engpc:fd { use };
+allow netd engmoded:fd { use };
+allow netd engmoded:tcp_socket { read write getopt setopt };
+allow netd vowifisrvd:fd { use };
+allow netd vowifisrvd:udp_socket{ read write getopt setopt };
+allow netd vowifisrvd:tcp_socket{ read write getopt setopt };

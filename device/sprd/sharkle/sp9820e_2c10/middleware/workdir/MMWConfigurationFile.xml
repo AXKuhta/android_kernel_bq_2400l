@@ -1,0 +1,47 @@
+<MMWConfigurationFile Version="1.0">
+
+	<HomeNetwork>
+		<PLMN mcc="405" mnc="840"/>
+		<PLMN mcc="405" mnc="854"/>
+		<PLMN mcc="405" mnc="855"/>
+		<PLMN mcc="405" mnc="856"/>
+		<PLMN mcc="405" mnc="857"/>
+		<PLMN mcc="405" mnc="858"/>
+		<PLMN mcc="405" mnc="859"/>
+		<PLMN mcc="405" mnc="860"/>
+		<PLMN mcc="405" mnc="861"/>
+		<PLMN mcc="405" mnc="862"/>
+		<PLMN mcc="405" mnc="863"/>
+		<PLMN mcc="405" mnc="864"/>
+		<PLMN mcc="405" mnc="865"/>
+		<PLMN mcc="405" mnc="866"/>
+		<PLMN mcc="405" mnc="867"/>
+		<PLMN mcc="405" mnc="868"/>
+		<PLMN mcc="405" mnc="869"/>
+		<PLMN mcc="405" mnc="870"/>
+		<PLMN mcc="405" mnc="871"/>
+		<PLMN mcc="405" mnc="872"/>
+		<PLMN mcc="405" mnc="873"/>
+		<PLMN mcc="405" mnc="874"/>
+	</HomeNetwork>
+
+	<ServiceAnnouncement>
+		<!-- The sleep mode duration PT1M - PT300M -->
+		<ServiceRejoinPeriod>PT15M</ServiceRejoinPeriod>
+	</ServiceAnnouncement>
+
+	<FileDownload>
+		<!-- The missing rate (in percentage) beyond which file repair is performed by application. -->
+		<!-- Value: decimal number from 0.1 to 0.9 or percentage from 10.0 to 90.0 (with % at the end) -->
+		<FileRepairThreshold>0.3</FileRepairThreshold>
+		<!-- If True, MW requests a complete file -->
+		<!--if False, MW abort file repair & remove file (optional) -->
+		<FullFileRepair value="false"/>
+	</FileDownload>
+
+	<ServiceCoverage>
+		<!-- Delay to check MiFi connection. -->
+		<WatchdogTimeout>PT4S</WatchdogTimeout>
+	</ServiceCoverage>
+
+</MMWConfigurationFile>

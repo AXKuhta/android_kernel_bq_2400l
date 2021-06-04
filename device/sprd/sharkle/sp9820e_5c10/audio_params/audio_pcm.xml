@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<rootnode>
+	<playback>
+		<voip channels="1" rate="16000" period_size="640" period_count="2" format="0" start_threshold="1280" card="0"  device="9"/>
+		<bt_voip channels="1" rate="16000" period_size="640" period_count="8" format="0" card="0"  device="0"><!--using for bt sco call and bt voip call--></bt_voip>
+		<call channels="1" rate="8000" period_size="320" period_count="4" format="0" stop_threshold="-1" card="0"  device="4"/>
+		<digital_fm channels="2" rate="32000" period_size="1280" period_count="2" format="0" stop_threshold="-1" card="0"  device="4"/>
+		<mm_normal channels="2" rate="48000" period_size="960" period_count="2" format="0" card="0"  device="0"/>
+		<mm_fast channels="2" rate="48000" period_size="1280" period_count="4" format="0" card="0"  device="2"/>
+		<off_load channels="2" rate="48000" period_size="320" period_count="8" format="0" stop_threshold="1073741824" card="0"  device="5"/>
+		<modem_ul channels="1" rate="8000" period_size="320" period_count="8" format="0" stop_threshold="-1" card="0"  device="1"/>
+		<modem_dl channels="1" rate="8000" period_size="160" period_count="2" format="0" stop_threshold="-1" card="0"  device="1"/>
+		<dsp_loop channels="1" rate="8000" period_size="160" period_count="2" format="0" card="0"  device="7"/>
+	</playback>
+	<record>
+		<voip channels="1" rate="16000" period_size="640" period_count="2" format="0" start_threshold="1280" card="0"  device="8"/>
+		<bt_voip channels="1" rate="16000" period_size="640" period_count="8" format="0" card="0"  device="0"/>
+		<call channels="1" rate="8000" period_size="320" format="0" period_count="4" card="0"  device="3"/>
+		<digital_fm channels="2" rate="48000" period_size="1280" period_count="2" format="0" card="0"  device="10"/>
+		<mm_normal channels="2" period_size="960" period_count="2" format="0" rate="48000" card="0"  device="0"/>
+		<mm_fast channels="2" rate="48000" period_size="1280" period_count="4" format="0" card="0"  device="0"/>
+		<off_load channels="2" rate="16000" period_size="320" period_count="8" format="0" stop_threshold="0" card="0"  device="5"/>
+		<modem_ul channels="1" rate="16000" period_size="320" period_count="8" format="0" stop_threshold="0" card="0"  device="0"/>
+		<modem_dl channels="1" rate="16000" period_size="160" period_count="2" format="0" stop_threshold="0" card="0"  device="0"/>
+		<dsp_loop channels="1" rate="8000" period_size="160" period_count="2" format="0" card="0" device="6"/>
+	</record>
+	<compress fragment_size="0x8000" fragments="0x08" card="0" device="0x0b"/>
+        <!--Note:modify period_size and period_count affect the latency-->
+</rootnode>

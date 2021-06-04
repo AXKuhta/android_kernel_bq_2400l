@@ -1,0 +1,24 @@
+# Default density config
+ro.sf.lcd_density=120
+ro.sf.lcd_width=24
+ro.sf.lcd_height=32
+# Set Opengl ES Version
+ro.opengles.version=196609
+
+# ro.fm.chip.port.UART.androidm=true
+
+# FRP property for pst device
+ro.frp.pst=/dev/block/platform/soc/soc:ap-ahb/20600000.sdio/by-name/persist
+
+#disable zsl function until zsl capture is ready
+persist.sys.cam.zsl=false
+
+#enable audio nr tuning
+ro.audio_tunning.nr=11
+
+#add for torch node 
+ro.kaios.torch_node=/sys/devices/virtual/flashlight/torch/enable
+ro.kaios.torch_enable_value=1
+ro.kaios.torch_disable_value=0
+
+persist.sys.nxp.path=/sys/bus/i2c/devices/2-0036/reg

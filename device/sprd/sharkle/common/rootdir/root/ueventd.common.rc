@@ -1,0 +1,67 @@
+/dev/sttygnss0          0660     system      system
+/dev/spipe_gnss0        0660     system      system
+/dev/spipe_gnss1        0660     system      system
+
+/dev/slog_gnss          0660     system      system
+/dev/slog_wcn           0660     system      system
+/dev/ttyS3              0660     system      system
+/dev/ttyS0              0660     bluetooth   net_bt_admin
+/dev/power_ctl          0660     system      system
+/dev/gnss_dbg           0660     system      system
+/dev/fm                 0660     media       media
+/dev/ttyM0              0660     bluetooth   net_bt_admin
+/dev/ttyM1              0660     bluetooth   net_bt_admin
+/dev/trusty-ipc-dev0    0660     system      system
+/dev/sttybt0            0660     bluetooth   net_bt_admin
+/dev/ttyBT0             0660     bluetooth   net_bt_admin
+
+/dev/trusty-ipc-dev0    0660     system      system
+/dev/stty_lte*          0660     radio       system
+/dev/slog_lte           0660     system      system
+/dev/slog_pm            0660     system      system
+/dev/sdiag_lte          0660     system      system
+/dev/spipe_lte*         0660     system      system
+/dev/spipe_lte5         0660     radio      system
+/dev/spipe_lte4         0660     media       audio
+/dev/spipe_lte6         0660     media       audio
+/dev/spipe_lte14        0660     media       audio
+/dev/spipe_pm*          0666     system      system
+/dev/block/mmcblk0p*    0660     system      system
+/dev/block/mmcblk1p*    0660     system      system
+/dev/AKM099XX           0660     system      system
+/dev/block/mmcblk0rpmb  0660     system      system
+/dev/ubi0_*             0660     system      system
+/dev/vser               0660     system      system
+/dev/ttyGS*             0660     system      system
+
+/dev/ion                0666     system      graphics
+/dev/gsp                0660     system      graphics
+
+/dev/mali0              0666     system      graphics
+/dev/sprd_jpg           0660     system      camera
+/dev/sprd_jpg1          0660     system      camera
+/dev/sprd_vsp           0660     system      camera
+/dev/sprd_vpp           0660     system      camera
+/dev/sprd_vsp_enc       0660     system      camera
+
+/dev/sprd_image         0660     system      camera
+/dev/sprd_isp           0660     system      camera
+/dev/sprd_sensor        0660     system      camera
+/dev/sprd_cpp           0660     system      camera
+
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boost 0660 media system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boostpulse 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/boostpulse_duration 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/timer_rate 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/hispeed_freq 0660 system system
+/sys/devices/system/cpu/cpu* /cpufreq/interactive/target_loads 0660 system system
+
+/sys/devices/virtual/input/input*   enable      0660  system   input
+/sys/devices/virtual/input/input*   delay      0660  system   input
+/dev/ltr_558als      0660  system   input
+/sys/class/xr-gsensor/device/gsensor      0660  system   input
+/sys/class/xr-gsensor/device/delay_acc      0660  system   input
+/sys/class/xr-pls/device/als      0660  system   input
+/sys/class/xr-pls/device/proximity      0660  system   input
+
+/dev/pn544              0660     nfc         nfc

@@ -1,0 +1,44 @@
+#add for board init.rc for recovery mode
+on post-fs
+
+
+service gnss_download /system/bin/gnss_download
+    class cali
+    user system
+    group system
+    oneshot
+
+on factorytest
+
+on cali
+    mkdir /data/gnss/ 0777 system system
+    mkdir /data/gnss/bin/ 0777 system system
+    mkdir /data/gnss/supl/ 0777 system system
+    mkdir /data/gnss/config/ 0777 system system
+    mkdir /data/gnss/lte/ 0777 system system
+    chmod 666 /data/gnss/bin/gnssmodem.bin
+    chmod 666 /data/gnss/config/config.xml
+    chmod 666 /data/gnss/supl/supl.xml
+    chmod 666 /data/gnss/supl/spirentroot.cer
+    chmod 666 /data/gnss/lte/ext.eph
+    chmod 666 /data/gnss/lte/jpleph.405
+    chmod 666 /data/gnss/gnss.log
+    chmod 666 /data/gnss/nmea.log
+    chmod 666 /productinfo/tsx.dat
+    chmod 666 /productinfo/txdata.txt
+on factorytest
+    mkdir /data/gnss/ 0777 system system
+    mkdir /data/gnss/bin/ 0777 system system
+    mkdir /data/gnss/supl/ 0777 system system
+    mkdir /data/gnss/config/ 0777 system system
+    mkdir /data/gnss/lte/ 0777 system system
+    chmod 666 /data/gnss/bin/gnssmodem.bin
+    chmod 666 /data/gnss/config/config.xml
+    chmod 666 /data/gnss/supl/supl.xml
+    chmod 666 /data/gnss/supl/spirentroot.cer
+    chmod 666 /data/gnss/lte/ext.eph
+    chmod 666 /data/gnss/lte/jpleph.405
+    chmod 666 /data/gnss/gnss.log
+    chmod 666 /data/gnss/nmea.log
+    chmod 666 /productinfo/tsx.dat
+    chmod 666 /productinfo/txdata.txt

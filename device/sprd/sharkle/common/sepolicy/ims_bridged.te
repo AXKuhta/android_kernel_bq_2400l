@@ -1,0 +1,33 @@
+type ims_bridged, domain;
+type ims_bridged_exec, exec_type, file_type;
+
+init_daemon_domain(ims_bridged)
+allow ims_bridged ims_bridged:netlink_socket { create getopt setopt bind getattr setattr write read };
+allow ims_bridged sysfs:file { write read open getattr };
+allow ims_bridged proc_net:file { write read open getattr };
+allow ims_bridged ims_bridged:udp_socket { create ioctl getopt setopt };
+allow ims_bridged ims_bridged:netlink_route_socket { create setopt bind getattr setattr write read nlmsg_read nlmsg_write };
+allow ims_bridged ims_bridged:netlink_generic_socket { create setopt bind getattr setattr write read };
+allow ims_bridged ims_bridged:capability { net_raw net_admin };
+allow ims_bridged system_app:udp_socket { read write getopt setopt };
+allow ims_bridged system_app:tcp_socket { read write getopt setopt };
+allow ims_bridged system_app:fd { use };
+allow ims_bridged system_app:dir { search };
+allow ims_bridged system_app:file { read open };
+allow ims_bridged shell_exec:file { read open execute execute_no_trans getattr};
+allow ims_bridged toolbox_exec:file { getattr execute read open execute_no_trans };
+allow ims_bridged ims_bridged:rawip_socket { create getopt setopt };
+allow ims_bridged system_file:file { execute_no_trans };
+allow ims_bridged vowifisrvd:fd { use };
+allow ims_bridged vowifisrvd:udp_socket { read write getopt setopt };
+allow ims_bridged vowifisrvd:tcp_socket { read write getopt setopt };
+
+userdebug_or_eng(`
+  allow ims_bridged su:udp_socket { read write getopt setopt };
+  allow ims_bridged su:dir { search };
+  allow ims_bridged su:file { read open };
+')
+
+#============= ims_bridged ============== 2017-08-02-13-24-29 added by genSepolicy script
+allow ims_bridged self:udp_socket ioctl;
+allow ims_bridged system_file:file lock;

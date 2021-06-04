@@ -1,0 +1,5 @@
+allow surfaceflinger system_data_file:dir { write add_name };
+
+allow surfaceflinger ylog:binder { transfer call };
+
+allow surfaceflinger security_service:service_manager { find };

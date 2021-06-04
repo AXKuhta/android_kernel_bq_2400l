@@ -1,0 +1,23 @@
+allow kernel block_device:blk_file { read write };
+allow kernel self:capability mknod;
+
+# add for UMS
+allow kernel vold_device:blk_file { read write };
+
+allow kernel prod_file:dir search;
+allow kernel kernel:system syslog_mod;
+
+# add for root check
+allow kernel block_device:dir search;
+allow kernel mmcblk_device:blk_file { open read write };
+allow kernel self:capability { dac_override dac_read_search };
+
+allow kernel storage_file:dir { search read };
+allow kernel storage_file:lnk_file { read };
+allow kernel mnt_user_file:dir { search read };
+allow kernel mnt_user_file:lnk_file { read };
+allow kernel fuse:dir { search write add_name };
+allow kernel fuse:file { create open };
+
+allow kernel cali_save_file:dir { search write add_name };
+allow kernel cali_save_file:file { create open read write };

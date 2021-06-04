@@ -1,0 +1,12 @@
+#
+#    ========================================
+#    EXPWAY eMBMS Middleware XPCOM component.
+#    (c) Copyright 2018 EXPWAY
+#    ========================================
+# 
+
+# LteBroadcastManager component declaration
+component {a0f8a2d4-8db6-4393-b457-33d839417300} EwXPCOMComponent.js
+contract @kaiostech.com/ltebroadcast/manager;1 {a0f8a2d4-8db6-4393-b457-33d839417300}
+
+

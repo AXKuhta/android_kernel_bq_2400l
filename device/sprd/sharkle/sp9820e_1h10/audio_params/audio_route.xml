@@ -1,0 +1,356 @@
+<root>
+	<devices>
+		<single-mic device="0x80000004">
+			<on>
+				<ctl ctl="MIC Boost" val="1"/>
+				<ctl ctl="ADCL Mixer MainMICADCL Switch" val="1"/>
+				<ctl ctl="ADCL Capture Volume" val="6"/>
+				<ctl ctl="Mic Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="MIC Boost" val="0"/>
+				<ctl ctl="ADCL Mixer MainMICADCL Switch" val="0"/>
+				<ctl ctl="Mic Function" val="0"/>
+			</off>
+		</single-mic>
+		<back-mic device="0x80000080">
+			<on>
+				<ctl ctl="ADC LRCLK Select" val="invert"/>
+				<ctl ctl="AUXMIC Boost" val="1"/>
+				<ctl ctl="ADCR Mixer AuxMICADCR Switch" val="1"/>
+				<ctl ctl="ADCR Capture Volume" val="6"/>
+				<ctl ctl="Aux Mic Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="ADC LRCLK Select" val="normal"/>
+				<ctl ctl="AUXMIC Boost" val="0"/>
+				<ctl ctl="ADCR Mixer AuxMICADCR Switch" val="0"/>
+				<ctl ctl="Mic Function" val="0"/>
+			</off>
+		</back-mic>
+		<double-mic device="0x80000084">
+			<on>
+				<ctl ctl="MIC Boost" val="1"/>
+				<ctl ctl="AUXMIC Boost" val="1"/>
+				<ctl ctl="ADCR Mixer AuxMICADCR Switch" val="1"/>
+				<ctl ctl="ADCL Mixer MainMICADCL Switch" val="1"/>
+				<ctl ctl="ADCL Capture Volume" val="6"/>
+				<ctl ctl="ADCR Capture Volume" val="6"/>
+				<ctl ctl="Aux Mic Function" val="1"/>
+				<ctl ctl="Mic Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="MIC Boost" val="0"/>
+				<ctl ctl="AUXMIC Boost" val="0"/>
+				<ctl ctl="ADCR Mixer AuxMICADCR Switch" val="0"/>
+				<ctl ctl="ADCL Mixer MainMICADCL Switch" val="0"/>
+				<ctl ctl="ADCL Capture Volume" val="0"/>
+				<ctl ctl="ADCR Capture Volume" val="0"/>
+				<ctl ctl="Aux Mic Function" val="0"/>
+				<ctl ctl="Mic Function" val="0"/>
+			</off>
+		</double-mic>
+		<headset-mic device="0x80000010">
+			<on>
+				<ctl ctl="HEADMIC Boost" val="1"/>
+				<ctl ctl="ADCL Mixer HPMICADCL Switch" val="1"/>
+				<ctl ctl="ADCL Capture Volume" val="6"/>
+				<ctl ctl="HP Mic Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="HEADMIC Boost" val="0"/>
+				<ctl ctl="ADCL Mixer HPMICADCL Switch" val="0"/>
+				<ctl ctl="ADCL Capture Volume" val="0"/>
+				<ctl ctl="HP Mic Function" val="0"/>
+			</off>
+		</headset-mic>
+		<speaker device="0x2">
+			<on>
+				<ctl ctl="SPKL Playback Volume" val="6"/>
+				<ctl ctl="SPKR Playback Volume" val="6"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="1"/>
+				<ctl ctl="Speaker Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="SPKL Playback Volume" val="0"/>
+				<ctl ctl="SPKR Playback Volume" val="0"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="0"/>
+				<ctl ctl="Speaker Function" val="0"/>
+			</off>
+			<transition>
+				<headphone-speaker>
+				</headphone-speaker>
+			</transition>
+		</speaker>
+		<headphone3p device="0x8">
+			<on>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="1"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="1"/>
+				<ctl ctl="HeadPhone Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="0"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="0"/>
+				<ctl ctl="HeadPhone Function" val="0"/>
+			</off>
+			<transition>
+				<headphone-speaker>
+				</headphone-speaker>
+			</transition>
+		</headphone3p>
+		<headphone4p device="0x4">
+			<on>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="1"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="1"/>
+				<ctl ctl="HeadPhone Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="0"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="0"/>
+				<ctl ctl="HeadPhone Function" val="0"/>
+			</off>
+			<transition>
+				<headphone-speaker>
+				</headphone-speaker>
+			</transition>
+		</headphone4p>
+		<headphone3p-speaker device="0xa">
+			<on>
+				<ctl ctl="SPKL Playback Volume" val="6"/>
+				<ctl ctl="SPKR Playback Volume" val="6"/>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="1"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="1"/>
+				<ctl ctl="HeadPhone Function" val="1"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="1"/>
+				<ctl ctl="Speaker Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="0"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="0"/>
+				<ctl ctl="HeadPhone Function" val="0"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="0"/>
+				<ctl ctl="Speaker Function" val="0"/>
+				<ctl ctl="SPKL Playback Volume" val="0"/>
+				<ctl ctl="SPKR Playback Volume" val="0"/>
+			</off>
+			<transition>
+				<headphone>
+				</headphone>
+				<speaker>
+				</speaker>
+			</transition>
+		</headphone3p-speaker>
+		<headphone4p-speaker device="0x6">
+			<on>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="1"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="1"/>
+				<ctl ctl="HeadPhone Function" val="1"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="1"/>
+				<ctl ctl="Speaker Function" val="1"/>
+				<ctl ctl="SPKL Playback Volume" val="6"/>
+				<ctl ctl="SPKR Playback Volume" val="6"/>
+			</on>
+			<off>
+				<ctl ctl="HPL Mixer DACLHPL Switch" val="0"/>
+				<ctl ctl="HPR Mixer DACRHPR Switch" val="0"/>
+				<ctl ctl="HeadPhone Function" val="0"/>
+				<ctl ctl="SPKL Mixer DACLSPKL Switch" val="0"/>
+				<ctl ctl="SPKL Playback Volume" val="0"/>
+				<ctl ctl="SPKR Playback Volume" val="0"/>
+				<ctl ctl="Speaker Function" val="0"/>
+			</off>
+			<transition>
+				<headphone>
+				</headphone>
+				<speaker>
+				</speaker>
+			</transition>
+		</headphone4p-speaker>
+		<handset device="0x1">
+			<on>
+				<ctl ctl="EAR Mixer DACLEAR Switch" val="1"/>
+				<ctl ctl="Earpiece Function" val="1"/>
+			</on>
+			<off>
+				<ctl ctl="EAR Mixer DACLEAR Switch" val="0"/>
+				<ctl ctl="Earpiece Function" val="0"/>
+			</off>
+		</handset>
+		<fm-record device="0x80002000">
+			<on>
+				<ctl ctl="VBC ADC3 SOURCE MUX" val="iis3"/>
+				<ctl ctl="VBC ADC3 INSEL MUX" val="adc3_source mux"/>
+				<ctl ctl="VBC AUDRCD INSEL1 MUX" val="adc3"/>
+				<ctl ctl="VBC_AUDPLY_DATA_DAC0_DSP" val="0"/>
+				<ctl ctl="VBC_ofld_DP_EN" val="enable"/>
+			</on>
+			<off>
+			</off>
+		</fm-record>
+
+		<bt_sco device="0x20">
+			<on>
+				<ctl ctl="VBC MIXERDG AUDIO DAC0 Set" val="0" count="0x02"/>
+				<ctl ctl="VBC MIXERDG VOICE DAC0 Set" val="0" count="0x02"/>
+				<ctl ctl="VBC ADDER MBDRC_VOICE DAC1 MUX" val="ADD"/>
+				<ctl ctl="VBC MIXERDG VOICE DAC1 Set" val="4096" count="0x02"/>
+				<ctl ctl="VBC MIXERDG AUDIO DAC1 Set" val="4096" count="0x02"/>
+				<ctl ctl="VBC MIXERDG DAC STEP Set" val="1024"/>
+				<ctl ctl="SYS_IIS0" val="vbc_iis3"/>                                                                                                                                                                
+				<ctl ctl="VBC ADC2 IIS INSEL MUX" val="iis3"/>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis3"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="VBC IIS Master Setting" val="iis0"/>
+				<ctl ctl="vbc_adc2_iis_lr_mod_sel" val="right_high"/>
+			</on>
+			<off>
+				<ctl ctl="VBC IIS Master Setting" val="disable"/>
+				<ctl ctl="VBC MIXERDG VOICE DAC1 Set" val="0" count="0x02"/>
+				<ctl ctl="VBC MIXERDG AUDIO DAC1 Set" val="0" count="0x02"/>
+				<ctl ctl="VBC ADDER MBDRC_VOICE DAC0 MUX" val="ADD"/>
+				<ctl ctl="VBC MIXERDG AUDIO DAC0 Set" val="4096" count="0x02"/>
+				<ctl ctl="VBC MIXERDG VOICE DAC0 Set" val="4096" count="0x02"/>
+				<ctl ctl="VBC MIXERDG DAC STEP Set" val="1024"/>
+				<ctl ctl="VBC_SRC_BT" val="48000"/>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis1"/>
+				<ctl ctl="VBC ADC2 IIS INSEL MUX" val="iis1"/>
+			</off>
+		</bt_sco>
+  </devices>
+	<fm-control>
+		<digital-fm>
+			<on>
+				<ctl ctl="VBC ADC3 IIS INSEL MUX" val="iis0"/>
+			</on>
+			<off>
+			</off>
+		</digital-fm>
+	</fm-control>
+	<private-control>
+	</private-control>
+	<dsploop>
+		<type val="0">
+			<ctl ctl="VBC_DSP_LOOPBACK_TYPE" val="ADDA"/>
+		</type>
+		<type val="1">
+			<ctl ctl="VBC_DSP_LOOPBACK_TYPE" val="AD_ULDL_DA_PROCESS"/>
+		</type>
+		<type val="2">
+			<ctl ctl="VBC_DSP_LOOPBACK_ARM_RATE" val="7"/>
+			<ctl ctl="VBC_DSP_LOOPBACK_VOICE_FMT" val="3"/>
+			<ctl ctl="VBC_DSP_LOOPBACK_TYPE" val="AD_UL_ENCODE_DECODE_DL_DA_PROCESS"/>
+		</type>
+	</dsploop>
+	<vbc_iis>
+		<dsploop>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC ADC1 IIS INSEL MUX" val="iis1"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="vbc_adc1_iis_lr_mod_sel" val="right_high"/>
+				<ctl ctl="vbc_dac0_mixer2_left_mux_sel" val="right_channel"/>
+				<ctl ctl="vbc_dac0_mixer2_right_mux_sel" val="left_channel"/>
+			</on>
+			<off>
+			</off>
+		</dsploop>
+		<voice>
+			<on>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis2"/>
+				<ctl ctl="VBC ADC2 IIS INSEL MUX" val="iis2"/>
+			</on>
+			<off>
+			</off>
+		</voice>
+		<voip>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis1"/>
+				<ctl ctl="VBC ADC2 IIS INSEL MUX" val="iis1"/>
+				<ctl ctl="vbc_adc2_iis_lr_mod_sel" val="right_high"/>
+				<ctl ctl="vbc_dac0_mixer2_left_mux_sel" val="right_channel"/>
+				<ctl ctl="vbc_dac0_mixer2_right_mux_sel" val="left_channel"/>
+			</on>
+			<off>
+				<ctl ctl="VBC IIS Master Setting" val="disable_loop"/>
+			</off>
+		</voip>
+		<voice_playback>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis1"/>
+				<ctl ctl="VBC ADC2 IIS INSEL MUX" val="iis1"/>
+				<ctl ctl="vbc_adc2_iis_lr_mod_sel" val="right_high"/>
+				<ctl ctl="vbc_dac0_mixer2_left_mux_sel" val="right_channel"/>
+				<ctl ctl="vbc_dac0_mixer2_right_mux_sel" val="left_channel"/>
+			</on>
+			<off>
+			</off>
+		</voice_playback>
+		<playback>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="vbc_dac0_mixer2_left_mux_sel" val="right_channel"/>
+				<ctl ctl="vbc_dac0_mixer2_right_mux_sel" val="left_channel"/>
+
+			</on>
+			<off>
+			</off>
+		</playback>
+		<fm>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="SYS_IIS0" val="vbc_iis3"/>
+				<ctl ctl="VBC DAC1 IIS OUTSEL MUX" val="iis1"/>
+				<ctl ctl="VBC DAC0 IIS OUTSEL MUX" val="iis0"/>
+				<ctl ctl="VBC ADC3 IIS INSEL MUX" val="iis3"/>
+				<ctl ctl="vbc_adc3_iis_lr_mod_sel" val="right_high"/>
+				<ctl ctl="vbc_dac0_mixer2_left_mux_sel" val="right_channel"/>
+				<ctl ctl="vbc_dac0_mixer2_right_mux_sel" val="left_channel"/>
+			</on>
+			<off>
+			</off>
+		</fm>
+		<record>
+			<on>
+				<ctl ctl="ag_iis0_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis1_ext_sel" val="enable"/>
+				<ctl ctl="ag_iis2_ext_sel" val="enable"/>
+				<ctl ctl="VBC ADC0 IIS INSEL MUX" val="iis1"/>
+				<ctl ctl="vbc_adc0_iis_lr_mod_sel" val="right_high"/>
+			</on>
+			<off>
+			</off>
+		</record>
+	</vbc_iis>
+	<vbc-control>
+		<modem num="1">
+			<cp name="csfb" pipe="/dev/spipe_lte6" vbchannel="0" cpuindex="0"/>
+		</modem>
+		<voip name="csfb" pipe="/dev/spipe_lte4" vbchannel="0" cpuindex="0" enable="1"/>
+	</vbc-control>
+	<i2s-control>
+		<btcall_I2s cpu_num="4">
+			<btcal_I2S cpu_index="0" i2s_index="0" switch="1" dst="external" ctl_file0="/proc/pin_switch/iis0_sys_sel/cp0_iis0" value0="1"/>
+			<btcal_I2S cpu_index="1" i2s_index="0" switch="1" dst="external" ctl_file0="/proc/pin_switch/iis0_sys_sel/cp1_iis0" value0="1"/>
+			<btcal_I2S cpu_index="2" i2s_index="0" switch="1" dst="external" ctl_file0="/proc/pin_switch/iis0_sys_sel/cp2_iis0" value0="1"/>
+			<btcal_I2S cpu_index="3" i2s_index="0" switch="1" dst="external" ctl_file0="/proc/pin_switch/iis0_sys_sel/ap_iis0" value0="1"/>
+		</btcall_I2s>
+		<fm_i2s cltfile="/proc/pin_switch/iis0_sys_sel/vbc_iis0"/>
+	</i2s-control>
+</root>

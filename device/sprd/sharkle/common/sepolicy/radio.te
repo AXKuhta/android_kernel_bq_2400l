@@ -1,0 +1,6 @@
+allow radio tty_device:chr_file rw_file_perms;
+
+allow radio system_app_data_file:dir search;
+allow radio system_app_data_file:file { read getattr open };
+
+allow radio security_service:service_manager { find };

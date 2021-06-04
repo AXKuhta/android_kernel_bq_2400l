@@ -1,0 +1,11 @@
+type ext_kill, domain;
+type ext_kill_exec, exec_type, file_type;
+
+init_daemon_domain(ext_kill)
+
+allow ext_kill system_file:file { execute_no_trans };
+allow ext_kill system_prop:property_service { set };
+allow ext_kill shell_exec:file { read };
+allow ext_kill property_socket:sock_file { write };
+allow ext_kill init: unix_stream_socket { connectto };
+allow ext_kill radio_prop:property_service { set };

@@ -1,0 +1,9 @@
+type lmfs,domain, mlstrustedsubject;
+type lmfs_exec,exec_type,file_type;
+
+init_daemon_domain(lmfs)
+
+allow lmfs self:capability { net_admin ipc_lock };
+allow lmfs self:netlink_socket create_socket_perms;
+allow lmfs self:sock_file create_file_perms;
+allow lmfs self:unix_stream_socket { write };

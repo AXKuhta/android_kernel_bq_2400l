@@ -1,0 +1,10 @@
+# write_ylogd(domain)
+# Ability to write to android log
+# daemon via sockets
+define(`write_ylogd', `
+unix_socket_send($1, ylogdw, ylogd)
+allow $1 ylogdw_socket:dir search;
+allow $1 ylog_file:dir search;
+allow $1 pmsg_device:chr_file w_file_perms;
+userdebug_or_eng(`unix_socket_send($1, ylogdw, su)')
+')

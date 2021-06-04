@@ -1,0 +1,51 @@
+import /init.common.rc
+
+on post-fs-data
+    setprop fpga.target.enable 1
+    setprop debug.delaytime.min 10
+    setprop debug.delaytime.mid 100
+    setprop debug.delaytime.max 1000
+    setprop debug.android_watchdog.disable 1
+    setprop debug.fb.16bit 1
+# NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+#modify permission for voicetrigger dev
+    chown system  audio /dev/rt5512
+    chmod 660     /dev/rt5512
+
+    insmod /lib/modules/sprdbt_tty.ko
+    insmod /lib/modules/sprd_fm.ko
+
+#on boot
+
+
+
+service rpmbserver /system/bin/rpmbserver -r /dev/block/mmcblk0rpmb
+    class cali
+    socket rpmbserver stream 0666 rpmbserver rpmbserver
+    group system
+    seclabel u:r:tee:s0
+
+#start storageproxyd must restorecon /data,
+#not start storageproxyd on cali mode (not trigger post-fs-data)
+on post-fs-data
+    setprop sprd.storageproxyd.enabled 1
+
+#on cali mode set sprd.storageproxyd.enabled=1 in production tools
+on property:sprd.storageproxyd.enabled=1
+    mkdir /data/sprd_ss 0770 system system
+    start rpmbproxyd
+    start storagensproxyd
+
+#service name must be < 16
+service rpmbproxyd /system/bin/sprdstorageproxyd -f rpmb -d /dev/trusty-ipc-dev0 -p /data/sprd_ss -r /dev/block/mmcblk0rpmb
+    class core
+    group system
+    seclabel u:r:tee:s0
+
+service storagensproxyd /system/bin/sprdstorageproxyd -f ns -d /dev/trusty-ipc-dev0 -p /data/sprd_ss -r /dev/block/mmcblk0rpmb
+    class late_start
+    group system
+    seclabel u:r:tee:s0

@@ -1,0 +1,15 @@
+typeattribute racoon mlstrustedsubject;
+
+#allow rild aprd:dir search;
+#allow rild aprd:file {read open};
+allow racoon prod_file:dir getattr;
+allow racoon racoon:capability {dac_override dac_read_search};
+allow racoon shell_exec:file {execute read open execute_no_trans getattr};
+allow racoon racoon:netlink_xfrm_socket {create setopt bind getattr write nlmsg_write nlmsg_read read};
+allow racoon racoon:netlink_route_socket nlmsg_write;
+allow racoon proc_net:file write;
+allow racoon storage_file:dir {search getattr read};
+allow racoon init_exec:file {getattr read open};
+allow racoon tun_device:chr_file write;
+allow racoon storage_file:lnk_file read;
+allow racoon racoon:udp_socket ioctl;

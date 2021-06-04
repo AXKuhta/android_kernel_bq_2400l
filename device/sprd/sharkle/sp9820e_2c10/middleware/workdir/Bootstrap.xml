@@ -1,0 +1,86 @@
+MIME-Version: 1.0
+Content-Type: multipart/related; boundary="D8119DDD2D264D4480E57277"; type="application/mbms-envelope+xml"
+Content-Description: eMBMS Boot Strap generated Thu Apr 21 17:01:52 IST 2016 (Apr 21 11:31:52 UTC 2016)
+
+
+--D8119DDD2D264D4480E57277
+Content-Type: application/mbms-envelope+xml
+Content-Location: http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/envelop.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<metadataEnvelope
+        xmlns="urn:3gpp:metadata:2005:MBMS:envelope"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:3gpp:metadata:2005:MBMS:envelope MetadataEnvelope.xsd">
+	<item metadataURI="http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/bundle.xml" version="1" validFrom="2013-12-31T18:30:00Z" validUntil="2113-12-31T18:30:00Z" contentType="application/mbms-user-service-description+xml" />
+	<item metadataURI="http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/sdp.sdp" version="430" validFrom="2013-12-31T18:30:00Z" validUntil="2113-12-31T18:30:00Z" contentType="application/sdp" />
+	<item metadataURI="http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/schedule.xml" version="1" validFrom="2013-12-31T18:30:00Z" validUntil="2113-12-31T18:30:00Z" contentType="application/mbms-schedule+xml" />
+</metadataEnvelope>
+
+--D8119DDD2D264D4480E57277
+Content-Type: application/mbms-user-service-description+xml
+Content-Location: http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/bundle.xml
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<bundleDescription
+        xmlns="urn:3GPP:metadata:2005:MBMS:userServiceDescription"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:sv="urn:3gpp:metadata:2009:MBMS:schemaVersion"
+        xmlns:r7="urn:3GPP:metadata:2007:MBMS:userServiceDescription"
+        xmlns:r9="urn:3GPP:metadata:2009:MBMS:userServiceDescription"
+        xsi:schemaLocation="urn:3GPP:metadata:2005:MBMS:userServiceDescription USD-schema-main.xsd">
+	<userServiceDescription serviceId="urn:3gpp:mbms:service_announcement">
+		<name lang="EN">Bootstrap</name>
+	    <serviceLanguage>EN</serviceLanguage>
+		<deliveryMethod sessionDescriptionURI="http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/sdp.sdp" xmlns:sv="urn:3gpp:metadata:2009:MBMS:schemaVersion">
+			<sv:delimiter>0</sv:delimiter>
+		</deliveryMethod>
+		<r9:schedule>
+			<r9:scheduleDescriptionURI>http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/schedule.xml</r9:scheduleDescriptionURI>
+		</r9:schedule>
+		<sv:delimiter>0</sv:delimiter>
+	</userServiceDescription>
+	<sv:schemaVersion>1</sv:schemaVersion>
+</bundleDescription>
+
+--D8119DDD2D264D4480E57277
+Content-Type: application/sdp
+Content-Location: http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/sdp.sdp
+
+v=0
+o=relbmsc00 100 1 IN IP4 10.254.1.1
+s=Bootstrap
+c=IN IP4 236.0.0.0/1
+a=source-filter: incl IN IP4 * 10.254.1.1
+a=flute-tsi:0
+b=AS:140000
+t=0 0
+a=mbms-mode:broadcast-mbsfn 279928
+a=alternative-tmgi:263496,263528,263544,267624,267640,271720,271736,275816,275832,279896,279912,283992,284008,288088,288104,292184,292200,296280,296296,300376,300392
+m=application 40000 FLUTE/UDP 0
+a=FEC-declaration:0 encoding-id=0
+a=FEC-redundancy-level:0 0
+a=FEC:0
+
+
+--D8119DDD2D264D4480E57277
+Content-Type: application/mbms-schedule+xml
+Content-Location: http://mbmsbs.mnc874.mcc405.pub.3gppnetwork.org/bootstrap/schedule.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<scheduleDescription
+        xmlns="urn:3gpp:metadata:2011:MBMS:scheduleDescription"
+        xmlns:p1="urn:3gpp:metadata:2009:MBMS:schemaVersion"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:3gpp:metadata:2011:MBMS:scheduleDescription ScheduleDescription.xsd">
+	<p1:schemaVersion>1</p1:schemaVersion>
+	<serviceSchedule>
+		<sessionSchedule>
+			<start>2013-12-31T18:30:00Z</start>
+			<stop>2113-12-31T18:30:00Z</stop>
+			<index>1</index>
+		</sessionSchedule>
+	</serviceSchedule>
+</scheduleDescription>
+
+--D8119DDD2D264D4480E57277--

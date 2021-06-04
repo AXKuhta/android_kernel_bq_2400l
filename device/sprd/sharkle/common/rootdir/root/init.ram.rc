@@ -1,0 +1,137 @@
+#    All memory configuration as following, which include ZRAM, LMK, RTCC,
+# KSM, and some memory properties. The configurations parameters could
+# auto-adaptive according to memory size.
+#    The Value of property ro.run.ramconfig should be {ro.ramsize} / 256, but if diff
+# ro.ramsize use the same memory configuration parameters, the Value ro.run.ramconfig
+# should be the same. such as 1024M, 1536M use the same configurations parameters.
+#
+#    NOTE : IF Add new ro.run.ramconfig, PLEASE copy the configurations
+# between BEGIN line and  END line, Then change the parameters that you want.
+
+
+# Table ro.ramsize mapping to ro.run.ramconfig
+on property:ro.ramsize=256M
+    setprop ro.run.ramconfig 1
+on property:ro.ramsize=512M
+    setprop ro.run.ramconfig 2
+on property:ro.ramsize=768M
+    setprop ro.run.ramconfig 2
+
+on property:ro.ramsize=1024M
+    setprop ro.run.ramconfig 4
+on property:ro.ramsize=1536M
+    setprop ro.run.ramconfig 4
+
+on property:ro.ramsize=2048M
+    setprop zram.disksize 800
+    setprop ro.run.ramconfig 8
+on property:ro.ramsize=3072M
+    setprop zram.disksize 1024
+    setprop ro.run.ramconfig 8
+on property:ro.ramsize=4096M
+    setprop zram.disksize 1536
+    setprop ro.run.ramconfig 8
+
+
+######## ramconfig=1 memory parameter configurations BEGIN #######
+on property:ro.run.ramconfig=1
+    setprop ro.config.low_ram true
+
+#Set ZRAM configure parameters
+    setprop zram.disksize 200
+    write /proc/sys/vm/extra_free_kbytes 1024
+
+#Set LMK watermark as {10M,15M,18M,24M,30M,36M}
+    write /sys/module/lowmemorykiller/parameters/adj 0,100,200,300,900,906
+    write /sys/module/lowmemorykiller/parameters/minfree 2560,3840,4608,6144,7680,9216
+    setprop sys.lmk.adj "0,100,200,300,900,906"
+    setprop sys.lmk.minfree "2560,3840,4608,6144,7680,9216"
+    setprop lmk.autocalc false
+
+#Enable KSM and ZRAM
+    setprop ro.config.ksm.support true
+    setprop ro.config.zram.support true
+
+######## ramconfig=1 memory parameter configurations END #########
+
+######## ramconfig=2,3 memory parameter configurations BEGIN #######
+on property:ro.run.ramconfig=2
+    setprop ro.config.low_ram true
+
+#Set ZRAM configure parameters
+    setprop zram.disksize 400
+    write /proc/sys/vm/extra_free_kbytes 2048
+
+#Set LMK watermark as {18M,30M,54M,66M,78M,90M}
+    write /sys/module/lowmemorykiller/parameters/adj 0,100,200,300,900,906
+    write /sys/module/lowmemorykiller/parameters/minfree 4608,7680,13824,16896,19968,23040
+    setprop sys.lmk.adj "0,100,200,300,900,906"
+    setprop sys.lmk.minfree "4608,7680,13824,16896,19968,23040"
+    setprop lmk.autocalc false
+
+#Enable KSM and ZRAM
+#    setprop ro.config.ksm.support true
+    setprop ro.config.zram.support true
+
+######## ramconfig=2,3 memory parameter configurations END #########
+
+
+######## ramconfig=4,6 memory parameter configurations BEGIN #######
+on property:ro.run.ramconfig=4
+    setprop ro.config.low_ram false
+
+#Set ZRAM configure parameters
+    setprop zram.disksize 600
+    write /proc/sys/vm/extra_free_kbytes 24300
+
+#Set LMK watermark as {22.5M,54M,63M,72M,80M,92MB}
+#    write /sys/module/lowmemorykiller/parameters/adj 0,100,300,800,900,906
+#    write /sys/module/lowmemorykiller/parameters/minfree 5760,13824,16128,18432,20480,23552
+#    setprop sys.lmk.adj "0,100,300,800,900,906"
+#    setprop sys.lmk.minfree "5760,13824,16128,18432,20480,23552"
+    setprop lmk.autocalc true
+
+#Set vmpressure
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+
+#Enable KSM and ZRAM
+    setprop ro.config.ksm.support true
+    setprop ro.config.zram.support true
+
+######## ramconfig=4,6 memory parameter configurations END #########
+
+
+######## ramconfig=8,12,16 memory parameter configurations BEGIN #######
+on property:ro.run.ramconfig=8
+    setprop ro.config.low_ram false
+
+#Set ZRAM configure parameters
+    write /proc/sys/vm/extra_free_kbytes 24300
+
+#Set LMK watermark as {45M,108M,126M,144M,160M,184MB}
+#    write /sys/module/lowmemorykiller/parameters/adj 0,100,300,800,900,906
+#    write /sys/module/lowmemorykiller/parameters/minfree 11520,27648,32256,36864,40960,47104
+#    setprop sys.lmk.adj "0,100,300,800,900,906"
+#    setprop sys.lmk.minfree "11520,27648,32256,36864,40960,47104"
+    setprop lmk.autocalc true
+
+#Set vmpressure
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+
+#Enable ZRAM
+    setprop ro.config.zram.support true
+
+######## ramconfig=8,12,16 memory parameter configurations END #########
+
+#Configurate ZRAM, then start zram service
+on property:ro.config.zram.support=true
+    setprop sys.vm.swappiness 100
+    write /proc/sys/vm/page-cluster  0
+    start zram
+
+#Configurate KSM, then run KSM
+on property:ro.config.ksm.support=true
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run   1
+

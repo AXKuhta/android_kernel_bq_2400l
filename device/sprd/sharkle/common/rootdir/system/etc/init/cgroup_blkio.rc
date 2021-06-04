@@ -1,0 +1,22 @@
+
+on post-fs-data
+    mount tmpfs cgroup_root /sys/fs/cgroup
+
+    mkdir /sys/fs/cgroup/blkio
+    mount cgroup none /sys/fs/cgroup/blkio blkio
+    chown system system /sys/fs/cgroup/blkio
+    chown system system /sys/fs/cgroup/blkio/tasks
+
+    mkdir /sys/fs/cgroup/blkio/main
+    chown system system /sys/fs/cgroup/blkio/main
+    chown system system /sys/fs/cgroup/blkio/main/tasks
+    chmod 0660 /sys/fs/cgroup/blkio/main/tasks
+
+    mkdir /sys/fs/cgroup/blkio/other
+    chown system system /sys/fs/cgroup/blkio/other
+    chown system system /sys/fs/cgroup/blkio/other/tasks
+    chmod 0660 /sys/fs/cgroup/blkio/other/tasks
+
+    write /sys/fs/cgroup/blkio/main/blkio.weight 700
+    write /sys/fs/cgroup/blkio/other/blkio.weight 300
+

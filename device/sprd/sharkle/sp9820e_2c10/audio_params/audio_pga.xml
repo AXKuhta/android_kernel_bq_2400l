@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<audio_pga>
+    <Audio>
+        <Handset>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </Handset>
+        <Handsfree>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </Handsfree>
+        <Headset4P>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </Headset4P>
+        <Headset3P>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </Headset3P>
+        <BTHS>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x1c" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x1c" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </BTHS>
+        <BTHSNREC>
+            <GSM>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </GSM>
+            <TDMA>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </TDMA>
+            <WCDMA_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_NB>
+            <WCDMA_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </WCDMA_WB>
+            <VOLTE_NB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_NB>
+            <VOLTE_WB>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOLTE_WB>
+            <VOIP>
+                <VBC_ADC2_DG ctl="VBC ADC2 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC2_DG>
+                <VBC_DAC1_DG ctl="VBC DAC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                    <volume1 visible="true" val="0x18" />
+                    <volume2 visible="true" val="0x18" />
+                    <volume3 visible="true" val="0x18" />
+                    <volume4 visible="true" val="0x18" />
+                    <volume5 visible="true" val="0x18" />
+                </VBC_DAC1_DG>
+            </VOIP>
+        </BTHSNREC>
+    </Audio>
+    <Music>
+        <Headset>
+            <Playback>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x1a" />
+                </VBC_DAC0_DG>
+            </Playback>
+            <Record>
+                <VBC_ADC1_DG ctl="VBC ADC0 DG Set">
+                    <volume0 visible="true" val="0x10" />
+                </VBC_ADC1_DG>
+            </Record>
+            <FM>
+                <VBC_FM_DG ctl="VBC FM DG Set">
+                    <volume0 visible="true" val="0x50" />
+                    <volume1 visible="true" val="0x4c" />
+                    <volume2 visible="true" val="0x48" />
+                    <volume3 visible="true" val="0x44" />
+                    <volume4 visible="true" val="0x40" />
+                    <volume5 visible="true" val="0x3c" />
+                    <volume6 visible="true" val="0x38" />
+                    <volume7 visible="true" val="0x34" />
+                    <volume8 visible="true" val="0x30" />
+                    <volume9 visible="true" val="0x2c" />
+                    <volume10 visible="true" val="0x28" />
+                    <volume11 visible="true" val="0x24" />
+                    <volume12 visible="true" val="0x20" />
+                    <volume13 visible="true" val="0x1c" />
+                    <volume14 visible="true" val="0x18" />
+                </VBC_FM_DG>
+                <VBC_ADC3_DG ctl="VBC ADC3 DG Set">
+                    <volume0 visible="true" val="0x1c" />
+                </VBC_ADC3_DG>
+            </FM>
+        </Headset>
+        <Handsfree>
+            <Playback>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x1a" />
+                </VBC_DAC0_DG>
+            </Playback>
+            <Record>
+                <VBC_ADC1_DG ctl="VBC ADC0 DG Set">
+                    <volume0 visible="true" val="0x10" />
+                </VBC_ADC1_DG>
+            </Record>
+            <FM>
+                <VBC_FM_DG ctl="VBC FM DG Set">
+                    <volume0 visible="true" val="0x50" />
+                    <volume1 visible="true" val="0x4c" />
+                    <volume2 visible="true" val="0x48" />
+                    <volume3 visible="true" val="0x44" />
+                    <volume4 visible="true" val="0x40" />
+                    <volume5 visible="true" val="0x3c" />
+                    <volume6 visible="true" val="0x38" />
+                    <volume7 visible="true" val="0x34" />
+                    <volume8 visible="true" val="0x30" />
+                    <volume9 visible="true" val="0x2c" />
+                    <volume10 visible="true" val="0x28" />
+                    <volume11 visible="true" val="0x24" />
+                    <volume12 visible="true" val="0x20" />
+                    <volume13 visible="true" val="0x1c" />
+                    <volume14 visible="true" val="0x18" />
+                </VBC_FM_DG>
+                <VBC_ADC3_DG ctl="VBC ADC3 DG Set">
+                    <volume0 visible="true" val="0x01" />
+                </VBC_ADC3_DG>
+            </FM>
+        </Handsfree>
+        <Headfree>
+            <Playback>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x1a" />
+                </VBC_DAC0_DG>
+            </Playback>
+        </Headfree>
+        <Handset>
+            <Playback>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x1a" />
+                </VBC_DAC0_DG>
+            </Playback>
+        </Handset>
+        <Bluetooth>
+            <Record>
+                <VBC_ADC3_DG ctl="VBC ADC3 DG Set">
+                    <volume0 visible="true" val="0x08" />
+                </VBC_ADC3_DG>
+            </Record>
+        </Bluetooth>
+    </Music>
+    <Loopback>
+        <Handset>
+            <MainMic>
+                <VBC_ADC1_DG ctl="VBC ADC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC1_DG>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_DAC0_DG>
+            </MainMic>
+        </Handset>
+        <Handsfree>
+            <MainMic>
+                <VBC_ADC1_DG ctl="VBC ADC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC1_DG>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_DAC0_DG>
+            </MainMic>
+            <AuxMic>
+                <VBC_ADC1_DG ctl="VBC ADC1 DG Set">
+                    <volume0 visible="true" val="0x00" />
+                </VBC_ADC1_DG>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_DAC0_DG>
+            </AuxMic>
+        </Handsfree>
+        <Headset4P>
+            <HeadMic>
+                <VBC_ADC1_DG ctl="VBC ADC1 DG Set">
+                    <volume0 visible="true" val="0x1e" />
+                </VBC_ADC1_DG>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_DAC0_DG>
+            </HeadMic>
+        </Headset4P>
+        <Headset3P>
+            <MainMic>
+                <VBC_ADC1_DG ctl="VBC ADC1 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_ADC1_DG>
+                <VBC_DAC0_DG ctl="VBC DAC0 DG Set">
+                    <volume0 visible="true" val="0x18" />
+                </VBC_DAC0_DG>
+            </MainMic>
+        </Headset3P>
+    </Loopback>
+</audio_pga>

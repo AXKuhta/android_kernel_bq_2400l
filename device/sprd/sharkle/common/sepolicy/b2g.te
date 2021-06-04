@@ -1,0 +1,6 @@
+allow b2g mmcblk_device:blk_file { read open};
+allow b2g refnotify_device:chr_file { read write open ioctl };
+allow b2g vowifisrvd:unix_stream_socket { connectto sendto read write };
+allow b2g vowifisrvd_file:dir { create write add_name remove_name read open search getattr rmdir setattr };
+allow b2g vowifisrvd_file:file { create getattr write unlink read append open rename setattr };
+allow b2g mlog_file:file {open read write} ;

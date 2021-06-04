@@ -1,0 +1,27 @@
+/dev/block/platform/sdio_sd/mmcblk0p1   /sdcard     vfat    defaults    defaults
+
+splloader       /spl            mtd     defaults    defaults
+uboot           /uboot          mtd     defaults    defaults
+
+prodnv          /productinfo    ubifs   defaults    defaults
+miscdata        /miscdata       ubi     defaults    defaults
+l_fixnv1        /ltefixnv1      ubi     defaults    defaults
+l_fixnv2        /ltefixnv2      ubi     defaults    defaults
+l_runtimenv1    /lteruntimenv1  ubi     defaults    defaults
+l_runtimenv2    /lteruntimenv2  ubi     defaults    defaults
+
+l_modem         /ltemodem       ubi     defaults    defaults
+l_ldsp          /ltedsp         ubi     defaults    defaults
+l_gdsp          /ltegdsp        ubi     defaults    defaults
+pm_sys          /pmsys          ubi     defaults    defaults
+logo            /logo           ubi     defaults    defaults
+fbootlogo       /fbootlogo      ubi     defaults    defaults
+wcnfdl          /wcnfdl         ubi     defaults    defaults
+wcnmodem        /wcnmodem       ubi     defaults    defaults
+
+boot            /boot           ubi     defaults    defaults
+system          /system         ubifs   defaults    defaults
+cache           /cache          ubifs   defaults    defaults
+recovery        /recovery       ubi     defaults    defaults
+misc            /misc           ubi     defaults    defaults
+userdata        /data           ubifs   defaults    defaults

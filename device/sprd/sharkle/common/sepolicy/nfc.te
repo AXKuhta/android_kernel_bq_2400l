@@ -1,0 +1,1 @@
+allow nfcd nfc_device:chr_file {open read write ioctl};

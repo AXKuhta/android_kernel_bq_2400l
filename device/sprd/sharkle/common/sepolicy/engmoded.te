@@ -1,0 +1,367 @@
+type engmoded, domain, mlstrustedsubject;
+type engmoded_exec, exec_type, file_type;
+
+init_daemon_domain(engmoded)
+
+allow engmoded shell_data_file:file {getattr write read open create execute_no_trans};
+allow engmoded shell_data_file:dir {search remove_name add_name open write};
+allow engmoded shell_data_file:sock_file {unlink create};
+allow engmoded mmcblk_device:dir {read write};
+allow engmoded mmcblk_device:file {open execute_no_trans execute};
+allow engmoded mmcblk_device:blk_file {open read write getattr};
+allow engmoded engmoded:netlink_generic_socket { create setopt bind getattr write read };
+allow engmoded property_socket:sock_file write;
+allow engmoded init:unix_stream_socket connectto;
+allow engmoded storage_file:dir {search getattr};
+#allow engmoded default_prop:property_service set;
+allow engmoded shell_exec:file {read open execute};
+
+allow engmoded system_data_file:dir {create read write open remove_name add_name};
+allow engmoded shell_exec:file execute_no_trans;
+allow engmoded storage_file:lnk_file {read getattr};
+
+allow engmoded fuse:dir {create write search add_name read remove_name open rmdir rename reparent setattr};
+allow engmoded fuse:file {read append create open getattr write unlink rename setattr ioctl};
+
+allow engmoded anr_data_file:dir {search setattr read getattr write add_name};
+allow engmoded anr_data_file:file {read open getattr write create};
+
+allow engmoded bluetooth_data_file:dir search;
+allow engmoded bluetooth_data_file:file {read write open getattr};
+
+allow engmoded bluetooth:dir {getattr read search open};
+allow engmoded bluetooth:file {read open};
+allow engmoded bluetooth:lnk_file {getattr read};
+
+allow engmoded tombstone_data_file:dir {read setattr getattr write add_name search};
+allow engmoded tombstone_data_file:file {create write open read getattr};
+
+allow engmoded system_data_file:file {open};
+
+allow engmoded engmoded:capability { sys_boot };
+allow engmoded engmoded:capability2 { block_suspend };
+allow engmoded cache_file:dir { read write open add_name create };
+allow engmoded cache_file:file { create open write };
+
+allow engmoded engmoded_exec:file execute_no_trans;
+allow engmoded system_file:file execute_no_trans;
+
+allow engmoded rild:unix_stream_socket {connectto} ;
+allow engmoded init:dir {getattr search read open};
+allow engmoded init:file {read open};
+allow engmoded init:lnk_file {getattr read};
+allow engmoded kernel:dir {read search getattr open};
+allow engmoded kernel:file {read open};
+allow engmoded kernel:lnk_file {getattr read};
+allow engmoded kernel:system {syslog_mod syslog_read};
+allow engmoded kernel:process {getattr} ;
+
+allow engmoded ueventd:dir {open read getattr search};
+allow engmoded ueventd:file {open read};
+allow engmoded ueventd:lnk_file {getattr read};
+allow engmoded logd:file {open read};
+allow engmoded logd:dir {open read getattr search};
+allow engmoded logd:lnk_file {getattr read};
+allow engmoded vold:file {open read};
+allow engmoded vold:dir {open read getattr search};
+allow engmoded vold:lnk_file {read getattr};
+
+allow engmoded gatekeeperd:file {open read};
+allow engmoded gatekeeperd:dir {open read getattr search};
+allow engmoded gatekeeperd:lnk_file {read getattr};
+
+allow engmoded healthd:file {open read};
+allow engmoded healthd:dir {open read search getattr};
+allow engmoded healthd:lnk_file {getattr read };
+
+allow engmoded surfaceflinger:dir {open read search getattr};
+allow engmoded surfaceflinger:file {open read};
+allow engmoded surfaceflinger:fd use;
+allow engmoded surfaceflinger:lnk_file {read getattr};
+
+allow engmoded lmkd:file {open read};
+allow engmoded lmkd:dir {open read search getattr};
+allow engmoded lmkd:lnk_file {getattr read};
+
+allow engmoded servicemanager:dir {open read search getattr};
+allow engmoded servicemanager:file {open read};
+allow engmoded servicemanager:binder call;
+allow engmoded servicemanager:lnk_file {read getattr};
+
+allow engmoded surfaceflinger:binder {transfer call};
+
+allow engmoded rild:dir {open read search getattr};
+allow engmoded rild:file {open read};
+allow engmoded rild:lnk_file {getattr read};
+allow engmoded batterysrv:file {open read};
+allow engmoded batterysrv:dir {open read search getattr};
+allow engmoded batterysrv:lnk_file {read getattr};
+allow engmoded shell:file {open read};
+allow engmoded shell:dir {open read search getattr};
+allow engmoded shell:lnk_file {getattr read};
+
+allow engmoded netd:file {open read};
+allow engmoded netd:dir {open read search getattr};
+allow engmoded netd:lnk_file {getattr read};
+allow engmoded netd:unix_stream_socket {connectto};
+
+allow engmoded debuggerd:dir {search getattr read open};
+allow engmoded debuggerd:file {read open};
+allow engmoded debuggerd:lnk_file {read getattr};
+
+allow engmoded engpc:file {open read};
+allow engmoded engpc:dir {open read search getattr};
+allow engmoded engpc:lnk_file {getattr read};
+allow engmoded cp_diskserver:file {open read};
+allow engmoded cp_diskserver:dir {open read search getattr};
+allow engmoded cp_diskserver:lnk_file {read getattr};
+allow engmoded drmserver:dir {open getattr search read};
+allow engmoded drmserver:file {open read};
+allow engmoded drmserver:lnk_file {read getattr};
+allow engmoded mediaserver:dir {open getattr search read};
+allow engmoded mediaserver:file {open read};
+allow engmoded mediaserver:lnk_file {read getattr};
+allow engmoded installd:dir {open getattr search read};
+allow engmoded installd:file {open read};
+allow engmoded installd:lnk_file {read getattr};
+allow engmoded keystore:dir {open getattr search read};
+allow engmoded keystore:file {open read};
+allow engmoded keystore:lnk_file {getattr read};
+allow engmoded wcnd:dir {open getattr search read};
+allow engmoded wcnd:file {open read};
+allow engmoded wcnd:lnk_file {getattr read};
+allow engmoded wcnd:unix_stream_socket {connectto};
+allow engmoded wcnd_exec:file {getattr execute read open execute_no_trans};
+
+allow engmoded phasecheckserver:dir {search open getattr read};
+allow engmoded phasecheckserver:file {open read};
+allow engmoded phasecheckserver:lnk_file {read getattr};
+
+allow engmoded zygote:dir {open read search getattr};
+allow engmoded zygote:file {open read};
+allow engmoded zygote:lnk_file {getattr read};
+allow engmoded zygote_exec:file {execute getattr read open execute_no_trans};
+
+allow engmoded refnotify:file {read open};
+allow engmoded refnotify:dir {open read getattr search};
+allow engmoded refnotify:lnk_file {getattr read};
+allow engmoded refnotify:chr_file {getattr};
+allow engmoded adbd:dir {open getattr read search};
+allow engmoded adbd:file {open read};
+allow engmoded adbd:lnk_file {getattr read};
+allow engmoded bootanim:dir {read getattr search open};
+allow engmoded bootanim:file {read open};
+
+allow engmoded ctl_default_prop:property_service {set};
+allow engmoded engmoded:capability {chown sys_admin dac_override net_raw sys_nice setuid setgid sys_nice fsetid sys_module net_admin ipc_lock};
+allow engmoded debugfs:file {read getattr};
+allow engmoded engmoded:system {module_load} ;
+allow engmoded sysfs_lowmemorykiller:file {read open getattr};
+allow engmoded wifi_data_file:dir {search read} ;
+allow engmoded proc:file {write};
+allow engmoded engmoded:capability2 syslog;
+allow engmoded wifi_data_file:file {open read write} ;
+allow engmoded srtd:dir {open read getattr search};
+allow engmoded srtd:file {open read};
+allow engmoded srtd:lnk_file {getattr read};
+
+allow engmoded log_device:chr_file read;
+
+allow engmoded system_server:dir {getattr search open read};
+allow engmoded system_server:file {read open};
+allow engmoded system_server:lnk_file {getattr read};
+allow engmoded system_server:binder {call transfer};
+
+#allow engmoded perfprofd:file {open read};
+#allow engmoded perfprofd:dir {open read getattr search};
+
+allow engmoded surfaceflinger_service:service_manager find;
+
+allow engmoded graphics_device:dir {getattr search};
+allow engmoded graphics_device:chr_file read;
+
+allow engmoded platform_app:dir {search getattr read open};
+allow engmoded platform_app:file {read open};
+allow engmoded platform_app:lnk_file {getattr read};
+allow engmoded untrusted_app:dir {search getattr open read};
+allow engmoded untrusted_app:file {read open};
+allow engmoded untrusted_app:lnk_file {read getattr};
+allow engmoded system_app:lnk_file {getattr read};
+allow engmoded system_app:dir {getattr search open read};
+allow engmoded system_app:file {read open};
+allow engmoded wpa:dir {getattr search open read};
+allow engmoded wpa:file {read open};
+allow engmoded wpa:lnk_file {getattr read};
+allow engmoded sdcardd:dir {search getattr read open};
+allow engmoded sdcardd:file {read open};
+allow engmoded sdcardd:lnk_file {getattr read};
+allow engmoded download:file {read open};
+allow engmoded download:lnk_file {getattr read};
+
+allow engmoded radio:dir {search getattr read open};
+allow engmoded radio:file {read open};
+allow engmoded radio:lnk_file {read getattr};
+
+
+allow engmoded slogmodem:dir {read search open getattr};
+allow engmoded slogmodem:file {open read};
+allow engmoded slogmodem:lnk_file {getattr read};
+
+allow engmoded activity_service:service_manager find;
+
+allow engmoded mnt_media_rw_file:dir search;
+
+allow engmoded engmoded:packet_socket {setopt create ioctl getopt read write};
+allow engmoded logcat_exec:file {getattr execute read open execute_no_trans};
+allow engmoded proc_sysrq:file {getattr};
+allow engmoded iqfeed:dir {search getattr read};
+allow engmoded engmoded:netlink_socket create;
+
+allow engmoded pstorefs:dir search;
+
+allow engmoded modem_control:dir {getattr search read open};
+allow engmoded modem_control:file {read open};
+allow engmoded modem_control:lnk_file {getattr read};
+
+allow engmoded aprd:dir {getattr search read open};
+allow engmoded aprd:file {read open};
+allow engmoded aprd:lnk_file {getattr read};
+
+allow engmoded logdr_socket:sock_file {write};
+allow engmoded logd:unix_stream_socket {connectto};
+allow engmoded ylog:unix_stream_socket {connectto};
+allow engmoded dnsproxyd_socket:sock_file {write};
+allow engmoded devpts:chr_file {ioctl read write getattr};
+allow engmoded audio_device:dir {getattr};
+
+allow engmoded prod_file:dir {getattr search read write add_name};
+allow engmoded prod_file:file {create open read write getattr} ;
+allow engmoded init_exec:file {getattr};
+
+allow engmoded block_device:dir {search getattr read open};
+allow engmoded block_device:blk_file {getattr};
+allow engmoded gps_device:chr_file {getattr};
+allow engmoded console_device:chr_file {getattr};
+allow engmoded dm_device:chr_file {getattr};
+allow engmoded fm_device:chr_file {getattr};
+allow engmoded bm_device:chr_file {getattr};
+allow engmoded fscklogs:dir {getattr};
+allow engmoded full_device:chr_file {getattr};
+allow engmoded fuse_device:chr_file {getattr};
+allow engmoded graphics_device:chr_file {getattr};
+allow engmoded ppp_device:chr_file {getattr};
+allow engmoded mtp_device:chr_file {getattr};
+#allow engmoded kmem_device:chr_file {getattr};
+allow engmoded sensors_device:chr_file {getattr};
+allow engmoded log_device:chr_file {getattr};
+allow engmoded log_device:dir {getattr};
+allow engmoded kmsg_device:chr_file {getattr open read write};
+allow engmoded input_device:chr_file {getattr};
+allow engmoded input_device:dir {getattr};
+allow engmoded camera_device:chr_file {getattr};
+allow engmoded qtaguid_device:chr_file {getattr};
+allow engmoded usbaccessory_device:chr_file {getattr};
+allow engmoded uhid_device:chr_file {getattr};
+allow engmoded serial_device:chr_file {getattr};
+allow engmoded hci_attach_dev:chr_file {getattr};
+allow engmoded tty_device:chr_file {getattr open read write};
+allow engmoded video_device:chr_file {getattr};
+allow engmoded radio_device:chr_file {getattr open read write};
+allow engmoded spipe_device:chr_file {getattr open read write};
+allow engmoded slog_device:chr_file {getattr open read write};
+allow engmoded tun_device:chr_file {getattr};
+allow engmoded efuse_device:chr_file {getattr};
+allow engmoded refnotify_device:chr_file {getattr};
+allow engmoded audio_device:chr_file {getattr};
+allow engmoded gpu_device:dir {getattr};
+allow engmoded gpu_device:chr_file {getattr};
+allow engmoded slogmodem_config_file:dir {add_name search write unlink getattr read open} ;
+allow engmoded slogmodem_config_file:file {create getattr open read write unlink} ;
+allow engmoded modemdriver_vpad_device:chr_file {getattr};
+allow engmoded wcn_device:chr_file {getattr};
+
+allow engmoded engmoded:udp_socket {create ioctl};
+
+#allow engmoded dalvikcache_data_file:file {write execute create unlink};
+#allow engmoded dalvikcache_data_file:dir {write add_name remove_name};
+
+allow engmoded port:tcp_socket { name_bind name_connect};
+allow engmoded node:tcp_socket { node_bind };
+allow engmoded engmoded:tcp_socket { create setopt bind listen accept read write connect getattr};
+allow engmoded fwmarkd_socket:sock_file { write };
+
+allow engmoded unlabeled:dir {  getattr };
+#libsepol.report_failure: neverallow on line 253 of external/sepolicy/domain.te (or line 5539 of policy.conf) violated by allow engmoded hw_random_device:chr_file { getattr };
+#allow engmoded hw_random_device:chr_file {  getattr };
+allow engmoded system_prop:property_service {set} ;
+allow engmoded powerctl_prop:property_service {set} ;
+allow engmoded tee:dir {getattr search } ;
+allow engmoded modemdriver_vpad:dir {getattr search} ;
+allow engmoded ylog:dir {getattr search} ;
+allow engmoded ylogd:dir {getattr search} ;
+allow engmoded thermald:dir {getattr search} ;
+allow engmoded b2g:dir {getattr search} ;
+allow engmoded fakeappops:dir {getattr search} ;
+allow engmoded gonksched:dir {getattr search} ;
+allow engmoded rilproxy:dir {getattr search} ;
+allow engmoded tee:file {getattr open read write} ;
+allow engmoded modemdriver_vpad:file {getattr open read write} ;
+allow engmoded ylog:file {getattr open read write} ;
+allow engmoded thermald:file {getattr open read write} ;
+allow engmoded b2g:file {getattr open read write} ;
+allow engmoded fakeappops:file {getattr open read write} ;
+allow engmoded gonksched:file {getattr open read write} ;
+allow engmoded rilproxy:file {getattr open read write} ;
+allow engmoded ueventd:process {getattr} ;
+allow engmoded logd:process {getattr} ;
+allow engmoded vold:process {getattr} ;
+allow engmoded healthd:process {getattr} ;
+allow engmoded servicemanager:process {getattr} ;
+allow engmoded rild:process {getattr} ;
+allow engmoded modem_control:process {getattr} ;
+allow engmoded modemdriver_vpad:process {getattr} ;
+allow engmoded shell:process {getattr} ;
+allow engmoded ylog:process {getattr} ;
+allow engmoded debuggerd:process {getattr} ;
+allow engmoded mediaserver:process {getattr} ;
+allow engmoded keystore:process {getattr} ;
+allow engmoded gonksched:process {getattr} ;
+allow engmoded b2g:process {getattr} ;
+allow engmoded refnotify:process {getattr} ;
+allow engmoded slogmodem:process {getattr} ;
+allow engmoded init:process {getattr} ;
+allow engmoded srtd:process {getattr} ;
+allow engmoded thermald:process {getattr} ;
+allow engmoded fakeappops:process {getattr} ;
+allow engmoded rilproxy:process {getattr} ;
+allow engmoded gatekeeperd:process {getattr} ;
+allow engmoded tee:process {getattr} ;
+allow engmoded cp_diskserver:process {getattr} ;
+allow engmoded sdcardd:process {getattr} ;
+allow engmoded netd:process {getattr} ;
+allow engmoded adbd:process {getattr} ;
+allow engmoded wpa:process {getattr} ;
+allow engmoded mnt_user_file:dir {search read} ;
+allow engmoded mlog_file:file {create open read write} ;
+allow engmoded init:tcp_socket {create setopt bind listen accept read write connect getattr} ;
+allow engmoded ylog_prop:property_service {set} ;
+allow engmoded mlog_file:dir {search};
+allow engmoded debug_prop:property_service {set};
+allow engmoded nfc_data_file:dir {search};
+allow engmoded nfc_data_file:file {create open read write};
+allow engmoded climax_exec:file {getattr execute read open execute_no_trans};
+allow engmoded sysfs:file {open read write};
+allow engmoded engpc:unix_stream_socket {connectto};
+
+userdebug_or_eng(`
+  allow engmoded perfprofd:file {open read};
+  allow engmoded perfprofd:dir {open read getattr search};
+  allow engmoded engmoded:netlink_socket {create bind write read getattr};
+  allow engmoded device:dir {open read create getattr remove_name write add_name};
+  allow engmoded device:file {open read create write unlink getattr append};
+  allow engmoded device:chr_file {getattr};
+  allow engmoded perfprofd:lnk_file {read getattr};
+  allow engmoded su:file {read open};
+  allow engmoded su:dir {getattr search read open};
+  allow engmoded su:lnk_file {getattr read};
+  ')

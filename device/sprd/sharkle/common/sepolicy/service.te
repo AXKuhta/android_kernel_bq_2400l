@@ -1,0 +1,3 @@
+type phasecheck_service,        service_manager_type;
+type security_service, system_server_service;
+

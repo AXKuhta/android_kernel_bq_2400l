@@ -1,0 +1,37 @@
+#Type for prodnv file
+type prod_file,file_type;
+type cali_save_file,file_type,data_file_type;
+#Type for usbmsc file
+type usbmsc_file,file_type;
+type srt_socket, file_type, mlstrustedobject;
+type hprofs_file, file_type, data_file_type, mlstrustedobject;
+type oem_file,file_type;
+type ylog_file, file_type, data_file_type;
+type mmitest_file, file_type, data_file_type;
+type cg_file, file_type, data_file_type;
+
+
+#Type for engpc
+type engpc_data, file_type, data_file_type;
+
+# apr
+type apr_data_file, file_type, data_file_type;
+
+#Type for mlog
+type mlog_file, file_type, data_file_type;
+
+#GNSS
+type gnss_file, file_type, data_file_type;
+type gnss_conf_file, file_type, data_file_type;
+
+# ylogd
+type ylogd_socket, file_type, mlstrustedobject;
+type ylogdw_socket, file_type, mlstrustedobject;
+
+type embmsd_socket, file_type, mlstrustedobject;
+
+#thermald
+type thermald_data_file,file_type, data_file_type;
+
+#vowifi
+type vowifisrvd_file, file_type, data_file_type;

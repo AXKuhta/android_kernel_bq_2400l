@@ -1,0 +1,6 @@
+type climax, domain, mlstrustedsubject;
+type climax_exec, exec_type, file_type;
+
+init_daemon_domain(climax)
+
+allow climax sysfs:file {getattr open read write };

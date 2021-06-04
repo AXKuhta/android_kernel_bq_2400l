@@ -1,0 +1,4 @@
+## add for Factory Reset Protection. begin
+## this should change according to persist partition defination
+/dev/block/mmcblk0p19 u:object_r:frp_block_device:s0
+## end

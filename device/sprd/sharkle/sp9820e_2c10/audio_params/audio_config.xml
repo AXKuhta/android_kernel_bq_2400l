@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<audio_config>
+	<card_name val="sprdphone-sc2731"/>
+	<pcm_dump>
+		<playback>
+			<normal hex_enable="0" hex_file="/data/local/media/playback_normal.pcm"/>
+			<fast hex_enable="0" hex_file="/data/local/media/playback_fast.pcm"/>
+			<offload hex_enable="0" hex_file="/data/local/media/playback_offload.pcm"/>
+			<dsploop hex_enable="0" hex_file="/data/local/media/playback_dsploop.hex"/>
+		</playback>
+		<record>
+			<normal hex_enable="0" hex_file="/data/local/media/record_normal.pcm"/>
+			<vbc hex_enable="0" hex_file="/data/local/media/record_vbc.pcm"/>
+			<process hex_enable="0" hex_file="/data/local/media/record_process.pcm"/>
+			<nr hex_enable="0" hex_file="/data/local/media/record_nr.pcm"/>
+			<mixer_vbc hex_enable="0" hex_file="/data/local/media/record_mixer_vbc.pcm"/>
+			<dsploop hex_enable="0" hex_file="/data/local/media/record_dsploop.hex"/>
+		</record>
+		<tunning>
+			<socket_tx txt_enable="0" txt_file="/data/local/media/tunning_socket_tx.txt" err_enable="0" err_file="/data/local/media/tunning_socket_err_tx.hex" hex_enable="0" hex_file="/data/local/media/tunning_socket_tx.hex"/>
+			<socket_rx txt_enable="0" txt_file="/data/local/media/tunning_socket_rx.txt" err_enable="0" err_file="/data/local/media/tunning_socket_err_rx.hex" hex_enable="0" hex_file="/data/local/media/tunning_socket_rx.hex"/>
+		</tunning>
+	</pcm_dump>
+	<record_process process="0x01" nr="0x01"/>
+	<log level="3"/>
+	<fm fm_type="0x00"/>
+	<dsp_loop type="0x01" delay="2000"/>
+	<mic_config main_mic="1" aux_mic="1"/>
+	<mute>
+		<spk_mute ctl="Speaker Mute"/>
+		<spk2_mute ctl="Speaker2 Mute"/>
+		<handset_mute ctl="Earpiece Mute"/>
+		<headset_mute ctl="HeadPhone Mute"/>
+		<linein_mute ctl="Linein Mute Switch"/>
+		<dsp_da0_mdg_mute ctl="VBC DAC0 DSP MDG Set"/>
+                <dsp_da1_mdg_mute ctl="VBC DAC1 DSP MDG Set"/>
+		<audio_mdg_mute ctl="VBC DAC0 AUD MDG Set"/>
+	</mute>
+</audio_config>

@@ -1,0 +1,689 @@
+import /init.${ro.hardware}.usb.rc
+import init.ram.rc
+import init.storage.rc
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
+    # set core dump resource limit
+    setrlimit 4 0 0
+
+    # coredump file will not be generated in release version
+    write /proc/sys/kernel/core_pattern /dev/null
+
+    #set logd property
+    setprop logd.klogd false
+    setprop logd.kernel false
+	mkdir /dev/socket/ylog 0755 system system
+
+on init
+    # SPRD: add for storage manage @{
+    export EMULATED_STORAGE /storage/self/emulated
+	mkdir /usbmsc 0750 system system
+    export PHYSICAL_STORAGE /storage/sdcard0
+    export USBDISK_STORAGE /storage/usbdisk
+    symlink /storage/self/primary /mnt/sdcard
+    # @}
+
+# SPRD: add for OTG usb disk @{
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0700 system system
+    symlink /storage/usbdisk /mnt/usbdisk
+# @}
+
+on fs
+    ubiattach 0 ubipac
+    # exec /sbin/resize2fs -ef /fstab.${ro.hardware}
+    mount_all /fstab.${ro.hardware}
+    #start path_wrapper
+    mount pstore pstore /sys/fs/pstore
+    setprop ro.crypto.fuse_sdcard true
+    symlink /system/res /res
+    symlink /system/bin /bin
+
+    #Allow others to read fb devices
+    chmod 660 /dev/graphics/fb0
+    chmod 660 /dev/fb0
+
+    chmod 666 /dev/adf0
+    chmod 666 /dev/adf-interface0.0
+    chmod 666 /dev/adf-overlay-engine0.0
+
+on post-fs
+    insmod /lib/modules/mali.ko
+    #bypass the gpu during the prior_bringu
+    #setprop ro.kernel.qemu 1
+    chown system system /productinfo
+	chown system system /usbmsc
+    chmod 0771 /usbmsc
+    chmod 0771 /productinfo
+    mkdir /productinfo/wcn 0755 root root
+    chmod 0666 /dev/mali0
+    chown system system /dev/mali0
+    chmod 0777 /sys/kernel/debug/tracing
+
+on post-fs-data
+    mkdir /data/modem_log 0770 shell system
+    mkdir /data/local/englog 0777
+    mkdir /data/local/slogmodem 0770 shell system
+    mkdir /data/ylog/modem_log 0770 shell system
+    mkdir /data/local/mcue 0777 media system
+    setprop vold.post_fs_data_done 1
+    mkdir /data/sprdinfo 0771 system system
+    chown system system /data/apr.conf
+    mkdir /data/misc 01771 system misc
+    mkdir /data/ylog 0777
+    mkdir /data/mlog 0777
+    #start ylog
+
+#vowifi execution path
+    mkdir /data/data/com.spreadtrum.vowifi 0770 root root
+
+    chmod 660 /proc/bluetooth/sleep/btwrite
+    chmod 660 /sys/class/rfkill/rfkill0/state
+    chmod 660 /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_admin /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt_admin /proc/bluetooth/sleep/btwrite
+#add wifi dir
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/system 0770 system system
+    mkdir /etc/wifi 0770 wifi wifi
+    write /data/misc/wifi/fwpath sta_mode
+    chmod 660 /data/misc/wifi/fwpath
+    chown wifi wifi /data/misc/wifi/fwpath
+    rmdir /data/system/wpa_supplicant
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    #to observe dnsmasq.leases file for dhcp information
+    chown dhcp system /data/misc/dhcp
+    setprop wifi.interface wlan0
+    mkdir /data/misc/dhcp6c 0770 dhcp dhcp
+    chown dhcp system /data/misc/dhcp6c
+    mkdir /data/misc/thermald 0770 system system
+    chown system system /data/misc/thermald
+    mkdir /data/sprd_debug 0770 system system
+
+#add lcd dir
+    copy /sys/class/display/panel0/name /data/lcdid
+
+service charge /system/bin/charge
+    class charger
+    user root
+    oneshot
+
+
+service modemd /system/bin/modemd
+    class core
+    socket embmsd stream 0666 system system
+    user root
+    group system radio shell
+    oneshot
+
+service spril-daemon /system/bin/sprdrild -l /system/lib/libsprd-ril.so -n 0
+    class core
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    disabled
+    user root
+    group radio cache inet misc audio sdcard_rw log shell system
+
+service spril-daemon1 /system/bin/sprdrild -l /system/lib/libsprd-ril.so -n 1
+    class core
+    socket rild2 stream 660 root radio
+    socket rild-debug2 stream 660 radio system
+    disabled
+    user root
+    group radio cache inet misc audio sdcard_rw log shell system
+
+#extend data service for phoneserver
+service ext_data /system/bin/ext_data
+    class main
+    user root
+
+service ip_monitor /system/bin/ip_monitor.sh
+    class main
+    user root
+    oneshot
+
+#enable dns filter
+service enable_dns /system/bin/tiny_firewall.sh enable_dns
+    user root
+    disabled
+    oneshot
+
+#disable dns filter
+service disable_dns /system/bin/tiny_firewall.sh disable_dns
+    user root
+    disabled
+    oneshot
+
+#wcnd service
+service wcnd /system/vendor/bin/connmgr
+    class core
+#   we will start as root and wcnd will switch to user system
+#   user system
+    group system inet wifi shell net_bt_stack
+    oneshot
+#wcn eng
+service wcnd_eng /system/vendor/bin/connmgr -G
+     class core
+     group system shell wifi inet net_bt_stack
+#     disabled
+     oneshot
+
+
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0 -dd
+    #   we will start as root and wpa_supplicant will switch to user wifi
+    #   after setting up the capabilities required for WEXT
+    #   user wifi
+    #   group wifi inet keystore
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0 -dd
+    group system wifi inet keystore
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+
+service dhcp6c_wifi /system/bin/dhcp6c -c /data/misc/dhcp6c/dhcp6c.conf
+    disabled
+    oneshot
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+    group system dhcp
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -ABKL
+    group system dhcp
+    disabled
+    oneshot
+
+service dhcpcd_ipv6 /system/bin/dhcpcd -6ABKL
+    group system dhcp
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    group system dhcp
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class main
+    group system dhcp
+    disabled
+    oneshot
+
+## Vowifi function   <---BEGIN
+#vowifi ipsec_server
+service ju_ipsec_server /system/bin/ju_ipsec_server
+    class main
+    socket ju_ipsec_server stream 600 system system
+    user root
+    oneshot
+
+service vowifisrvd /system/bin/vowifisrvd
+    class main
+    user root
+
+service ims_bridged /system/bin/ims_bridged
+    class main
+    user root
+
+on property:persist.sys.vilte.socket=ap
+    write /sys/module/ims_bridge/parameters/volte_video_apsk 1
+
+# If netd restart, the policy rules added by imsbr will be flushed
+# so restart ims_bridged to add these policy rules again!
+on property:init.svc.netd=restarting
+    restart ims_bridged
+## Vowifi function   <---END
+
+on boot
+    chown system system /proc/wcn_gnss/start
+    chown system system /proc/wcn_gnss/stop
+    chown system system /proc/wcn_gnss/status
+    chown system system /sys/class/misc/gnss_common_ctl/gnss_power_enable
+    chmod  220 /sys/class/misc/gnss_common_ctl/gnss_power_enable
+    chmod 660 /proc/wcn_gnss/start
+    chmod 660 /proc/wcn_gnss/stop
+    chmod 660 /proc/wcn_gnss/status
+
+    chown system system /dev/iio:device1
+    chown system system /sys/bus/iio/devices/trigger0/name
+    chown system system /sys/bus/iio/devices/iio:device1/buffer
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/iio/trigger/current_trigger
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/batch
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/logctl
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/calibrator_cmd
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/calibrator_data
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/enable
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/flush
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/iio
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/version
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/op_download
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/mag_cali_flag
+    chown system system /sys/class/sprd_sensorhub/sensor_hub/sensorhub
+    chmod 0660 /dev/AKM099XX
+    chown system system /dev/AKM099XX
+
+    chmod 666 /sys/bus/iio/devices/trigger0/name
+    chmod 666 /sys/bus/iio/devices/iio:device1/buffer/length
+    chmod 666 /sys/bus/iio/devices/iio:device1/buffer/enable
+    chmod 666 /sys/bus/iio/devices/iio:device1/trigger/current_trigger
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/iio/trigger/current_trigger
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/batch
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/logctl
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/calibrator_cmd
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/calibrator_data
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/enable
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/flush
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/iio
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/version
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/op_download
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/mag_cali_flag
+    chmod 666 /sys/class/sprd_sensorhub/sensor_hub/sensorhub
+    mkdir /productinfo/sensor_calibration_data
+    chmod 644 /proc/reserve_space/black_list
+    chmod 644 /proc/reserve_space/white_list
+    chmod 644 /proc/reserve_space/black_list_comm
+    chmod 644 /proc/reserve_space/app_guid
+    write /proc/reserve_space/black_list "1001,1005,1006,1012,1013,1022,1023,1024,1025,9999,"
+    write /proc/reserve_space/white_list "1061,10000,10023,10074,10075,"
+    write /proc/reserve_space/black_list_comm "slog,"
+    write /proc/reserve_space/app_guid "10000"
+    write /proc/sys/net/core/rmem_max 8388608
+
+    # Support audio test
+    mkdir /dev/pipe 0755 system system
+    mkdir /data/local/media 0770 audioserver system
+
+    chown audioserver system /proc/agdsp/agdsp
+    chown audioserver system /proc/agdsp/ldinfo
+    chown audioserver system /proc/agdsp/mem
+    chown audioserver system /proc/agdsp/start
+    chown audioserver system /proc/agdsp/status
+    chown audioserver system /proc/agdsp/stop
+    chown audioserver system /proc/agdsp/wdtirq
+    chown audioserver system /dev/block/platform/sdio_emmc/by-name/l_agdsp
+    chown audioserver system /dev/audio_pipe
+    chmod 666   /dev/audio_pipe
+    chmod 666   /dev/audio_dsp_log
+    chmod 666   /dev/audio_dsp_pcm
+    chmod 666   /dev/audio_dsp_mem
+
+    chown  root audio  /dev/audio_dsp_log
+    chown  root audio  /dev/audio_dsp_pcm
+    chown  root audio  /dev/audio_dsp_mem
+
+#for thermal
+    chown system system /sys/class/thermal/thermal_zone0/trip_point_0_temp
+	chown system system /sys/class/thermal/thermal_zone0/trip_point_1_temp
+	chown system system /sys/class/power_supply/battery/chg_cool_state
+	chown system system /sys/class/power_supply/battery/adjust_cur_min
+	chown system system /sys/class/power_supply/battery/input_current_limit
+    chown system system /sys/class/thermal/cooling_device0/min_core_num
+    chown system system /sys/class/thermal/cooling_device0/min_freq
+    chown system system /sys/class/backlight/sprd_backlight/max_brightness
+
+#modify permission for flashlight attributes file
+	chown cameraserver system /sys/devices/virtual/misc/sprd_flash/test
+	chmod 660 /sys/devices/virtual/misc/sprd_flash/test
+
+# chown for engineermode
+   chown system system /sys/class/power_supply/battery/stop_charge
+   chmod 0664 /sys/class/power_supply/battery/stop_charge
+   chmod 0666 /sys/class/power_supply/sprdfgu/cc_test_cmd
+
+    chown media system /sys/kernel/hmp/boost
+    chown system system /sys/kernel/hmp/boostpulse
+    chown media system /sys/kernel/hmp/packing_boost
+    chown system system /sys/kernel/hmp/packing_boostpulse
+    chown system system /sys/kernel/hmp/boostpulse_duration
+
+    chmod 660 /sys/kernel/hmp/boost
+    chmod 660 /sys/kernel/hmp/boostpulse
+    chmod 660 /sys/kernel/hmp/packing_boost
+    chmod 660 /sys/kernel/hmp/packing_boostpulse
+    chmod 660 /sys/kernel/hmp/boostpulse_duration
+
+#for sysdump
+    chown system system /proc/sprd_sysdump
+    chown system system /data/sprd_debug
+
+    # for power-hint HAL
+    # Cpu hotplug boost
+    chown system system /sys/devices/system/cpu/cpuhotplug/boostpulse
+    chown system system /sys/devices/system/cpu/cpuhotplug/boostpulse_duration
+    chmod 0660 /sys/devices/system/cpu/cpuhotplug/boostpulse
+    chmod 0660 /sys/devices/system/cpu/cpuhotplug/boostpulse_duration
+    chown system system /sys/devices/system/cpu/cpuhotplug/cluster0_core_max_limit
+    chown system system /sys/devices/system/cpu/cpuhotplug/cluster0_core_min_limit
+    chmod 0660 /sys/devices/system/cpu/cpuhotplug/cluster0_core_max_limit
+    chmod 0660 /sys/devices/system/cpu/cpuhotplug/cluster0_core_max_limit
+    # for devfreq ddr
+    chmod 666 /sys/class/devfreq/scene-frequency/sprd_governor/scenario_dfs
+    chmod 666 /sys/class/devfreq/scene-frequency/sprd_governor/exit_scene
+    chmod 666 /sys/class/devfreq/scene-frequency/sprd_governor/scene_boost_dfs
+
+on property:ro.debuggable=1
+     write /sys/module/smsg/parameters/debug_enable 1
+     chmod 777 /sys/kernel/debug
+     write /sys/kernel/debug/fatal_dump/enable 1
+     mkdir /data/corefile
+     chmod 777 /data/corefile
+     # write /proc/sys/kernel/core_pattern /data/corefile/core-%e-%p
+     write /proc/sys/fs/suid_dumpable 1
+     start ylog
+
+on property:persist.sys.eng.reset=0
+    write /sys/class/misc/sprd_7sreset/hard_mode 0
+
+on property:persist.sys.eng.reset=1
+    write /sys/class/misc/sprd_7sreset/hard_mode 1
+
+# Start the ylog daemon
+on property:persist.ylog.enabled=1
+    start ylog
+
+# Stop the ylog daemon
+on property:persist.ylog.enabled=0
+    stop ylog
+
+on early-boot
+    chmod 660 /proc/pmic/stop
+    chmod 660 /proc/pmic/start
+    chmod 660 /proc/pmic/pm_sys
+    chmod 440 /proc/pmic/mem
+    chmod 660 /proc/pmic/status
+    chmod 660 /proc/pmic/wdtirq
+    chmod 660 /proc/pmic/ldinfo
+
+    chown system root /proc/pmic/stop
+    chown system root /proc/pmic/start
+    chown system root /proc/pmic/pm_sys
+    chown system root /proc/pmic/mem
+    chown system root /proc/pmic/status
+    chown system root /proc/pmic/wdtirq
+    chown system root /proc/pmic/ldinfo
+
+    chmod 660 /proc/cptl/wdtirq
+    chmod 660 /proc/cptl/stop
+    chmod 660 /proc/cptl/start
+    chmod 660 /proc/cptl/modem
+    chmod 660 /proc/cptl/deltanv
+    chmod 660 /proc/cptl/gdsp
+    chmod 660 /proc/cptl/ldsp
+    chmod 660 /proc/cptl/fixnv
+    chmod 660 /proc/cptl/runnv
+    chmod 660 /proc/cptl/cpcmdline
+    chmod 440 /proc/cptl/ldinfo
+    chmod 440 /proc/cptl/mini_dump
+    chmod 440 /proc/cptl/mem
+
+    chown system root /proc/cptl/wdtirq
+    chown system root /proc/cptl/stop
+    chown system root /proc/cptl/start
+    chown system root /proc/cptl/modem
+    chown system root /proc/cptl/deltanv
+    chown system root /proc/cptl/ldsp
+    chown system root /proc/cptl/gdsp
+    chown system root /proc/cptl/fixnv
+    chown system root /proc/cptl/runnv
+    chown system root /proc/cptl/cpcmdline
+    chown system root /proc/cptl/ldinfo
+    chown system system /proc/cptl/mini_dump
+    chown system system /proc/cptl/mem
+
+    #add for engineermode
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+    chmod 660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+#DBG LOG Ctrl
+    chmod 0660 /sys/class/modem/debug-log/freq
+    chmod 0660 /sys/class/modem/debug-log/channel
+    chown system system /sys/class/modem/debug-log/freq
+    chown system system /sys/class/modem/debug-log/channel
+
+    # ETB info file
+    chown system system /dev/10003000.tmc-etb
+    chmod 660 /dev/10003000.tmc-etb
+
+    chmod 0664 /dev/sctl_pm
+    chmod 0664 /dev/iq_mem
+    chmod 0660 /dev/sprd_bm
+    chmod 0660 /dev/dmc_mpu
+
+#for Display
+    chmod 0660 /sys/class/display/dphy0/hop
+    chmod 0660 /sys/class/display/dphy0/ssc
+    chmod 0660 /sys/class/display/panel0/name
+    chmod 666 /sys/class/display/dispc0/vsync_rate_report
+
+    chown system system /sys/class/display/dphy0/hop
+    chown system system /sys/class/display/dphy0/ssc
+    chown system system /sys/class/display/panel0/name
+    chown system system /sys/class/display/dispc0/vsync_rate_report
+    chown graphics system /sys/class/display/dispc0/vsync_rate_report
+
+    chown system system /sys/class/backlight/sprd_backlight/brightness
+    chown system system /sys/class/backlight/sprd_backlight/max_brightness
+    chown system system /dev/iq_mem
+    chown system system /sys/devices/sprd-adf/dispc0/dynamic_pclk
+    chown system system /sys/devices/sprd-adf/dispc0/dynamic_mipi_clk
+    chown system system /dev/sprd_bm
+    chown system system /dev/dmc_mpu
+    chown system system /dev/sctl_pm
+
+    chown system system /proc/mdbg
+    chown system root /proc/mdbg/assert
+    chown system root /proc/mdbg/wdtirq
+    chown system system /proc/mdbg/at_cmd
+    chown system root /proc/mdbg/loopcheck
+
+    chmod 770 /proc/mdbg
+    chmod 760 /proc/mdbg/assert
+    chmod 760 /proc/mdbg/wdtirq
+    chmod 760 /proc/mdbg/at_cmd
+    chmod 760 /proc/mdbg/loopcheck
+
+# SIPC state files
+    chown system root /sys/kernel/debug/sipc/mbox
+    chown system root /sys/kernel/debug/sipc/sblock
+    chown system root /sys/kernel/debug/sipc/sbuf
+    chown system root /sys/kernel/debug/sipc/sipx
+    chown system root /sys/kernel/debug/sipc/smem
+    chown system root /sys/kernel/debug/sipc/smsg
+
+     mknod /dev/input c 5 0
+     chmod 777 /dev/input
+
+#add for validationtools test begin
+    chown system system /sys/class/leds/red_bl/high_time
+    chown system system /sys/class/leds/red_bl/low_time
+    chown system system /sys/class/leds/red_bl/rising_time
+    chown system system /sys/class/leds/red_bl/falling_time
+    chown system system /sys/class/leds/red_bl/on_off
+
+    chown system system /sys/class/leds/green_bl/high_time
+    chown system system /sys/class/leds/green_bl/low_time
+    chown system system /sys/class/leds/green_bl/rising_time
+    chown system system /sys/class/leds/green_bl/falling_time
+    chown system system /sys/class/leds/green_bl/on_off
+
+    chown system system /sys/class/leds/blue_bl/high_time
+    chown system system /sys/class/leds/blue_bl/low_time
+    chown system system /sys/class/leds/blue_bl/rising_time
+    chown system system /sys/class/leds/blue_bl/falling_time
+    chown system system /sys/class/leds/blue_bl/on_off
+#add for validationtools test end
+
+service path_wrapper /sbin/path_wrapper
+    critical
+    seclabel u:r:path_wrapper:s0
+    oneshot
+
+service modem_control  /system/bin/modem_control
+    class core
+    user root
+    group system radio shell
+
+service refnotify /system/bin/refnotify
+    class main
+    user system
+    group system radio shell
+
+service slogmodem /system/bin/slogmodem
+    class main
+    user root
+    group system sdcard_rw media_rw audio radio
+
+service iqfeed /system/bin/iqfeed
+    class main
+    user system
+    group system sdcard_rw media_rw
+    disabled
+service engpcclientt /system/bin/engpc -p t -a /dev/ttyGS0 -d /dev/ttyGS1 -l /dev/ttyGS4
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+service engpcclientlte /system/bin/engpc -p l -a /dev/ttyGS5 -d /dev/ttyGS6 -l /dev/ttyGS7
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+service engpcclientwcn /system/bin/engpc -p wcn -a /dev/ttyGS2 -d /dev/ttyGS3
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+service engpcclientw /system/bin/engpc -p w -a /dev/ttyGS0 -d /dev/ttyGS1 -l /dev/ttyGS4
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+service engpcclienttl /system/bin/engpc -p tl -a /dev/ttyGS5 -d /dev/ttyGS6
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+service engpcclientlf /system/bin/engpc -p lf -a /dev/ttyGS5 -d /dev/ttyGS6 -l /dev/ttyGS7
+    class core
+    user root
+    group system radio shell
+    disabled
+    oneshot
+
+# COUNT server
+service count /system/xbin/count
+    class main
+    socket countserver stream 0777 system system
+    user root
+    group root
+    oneshot
+
+service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_bnep0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+   disabled
+   oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+service ylog /system/bin/ylog
+    class main
+    user root
+    disabled
+
+service aprd /system/bin/collect_apr
+    class main
+    user root
+    disabled
+    oneshot
+
+on property:persist.sys.apr.enabled=1
+    start aprd
+
+on property:persist.sys.apr.enabled=0
+    stop aprd
+
+service systemDebuggerd /system/bin/systemDebuggerd
+    class main
+    user system
+    oneshot
+
+# SRT server
+service srtd /system/xbin/srtd
+    class main
+    socket srtserver stream 0777 system system
+    user root
+    group root
+    oneshot
+
+#cp_diskserver
+service cp_diskserver /system/bin/cp_diskserver
+    class cali
+    user root
+    group root
+    disabled
+
+service autotest /system/bin/autotest
+    class main
+    disabled
+    user root
+    oneshot
+
+#zram
+service zram /system/xbin/zram.sh
+    disabled
+    oneshot
+
+service thermald /system/vendor/bin/thermald
+    class main
+    user system
+    group system
+
+#volte
+service modemDriver /system/bin/modemDriver_vpad_main
+    class core
+    user root
+    group system radio shell
+
+on property:persist.sys.volte.enable=true
+    start modemDriver

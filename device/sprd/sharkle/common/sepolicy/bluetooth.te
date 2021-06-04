@@ -1,0 +1,14 @@
+allow bluetooth wcnd:unix_stream_socket { connectto sendto };
+allow bluetooth serial_device:chr_file { read write open ioctl };
+allow bluetooth prod_file:dir search;
+allow bluetooth prod_file:file { read write open rw_file_perms setattr };
+allow bluetooth debugfs:file read;
+allow bluetooth sysfs:file { read write open ioctl };
+allow bluetooth ylog:unix_stream_socket { connectto sendto };
+allow bluetooth property_socket:sock_file { write };
+allow bluetooth bluetooth_data_file:dir { search };
+allow bluetooth tty_device:chr_file { read write open ioctl };
+allow bluetoothd bluetoothd:tcp_socket { create };
+allow bluetoothd tty_device:chr_file { read write open ioctl };
+allow toolbox bluetooth_data_file:dir { search };
+allow toolbox bluetooth_data_file:file { read write open setattr getattr };

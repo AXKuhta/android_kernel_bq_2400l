@@ -1,0 +1,217 @@
+<!-- MSP configuration file -->
+<EwMSPConfig>
+
+    <!-- MSP Configuration Profile -->
+    <MSPConfigProfile value="RIL"/>
+
+    <!-- General Parameters -->
+    <GeneralParameters>
+        <!-- Trace log file enable flag: 0 disable, 1 enable. -->
+        <TraceFileEnable value="1"/>
+        <!-- MSP log level: debug or 1, info or 2, warning or 3, error or 4 -->
+        <MSPLogLevel value="debug"/>
+        <!-- MSP log file max size (in bytes) -->
+        <MSPLogMaxSize value="10485760"/>
+
+        <!-- MANDATORY. Network interface created by LTE/eMBMS Modem (ex: rndis0 / lte0 / rmnet0 / rmnet1 / 127.0.0.1 / etc...). -->
+        <ModemNetworkInterface value="seth_lte7"/>
+
+        <!-- Web Server Parameters -->
+        <WebServer>
+            <!-- MANDATORY. MSP Web Server TCP port (DASH, JSON-RPC, Downloaded files). -->
+            <ListeningPort value="8080">
+                <!-- MANDATORY. MSP Web Server Network interface -->
+                <ListeningInterface value="127.0.0.1"/>
+                <ListeningInterface value="?usb0"/> <!-- ** FOR DONGLE ** -->
+            </ListeningPort>
+        </WebServer>
+
+        <!-- Timeout before closing idle HTTP keep-alive connection. -->
+        <KeepAliveTimeout value="PT15S"/>
+        <!-- Broadcast DB is keep on startup by default. -->
+        <MSPClearDBOnStartup value="false"/>
+
+        <!-- NTP server name: time.gpsonextra.net #Asia: asia.pool.ntp.org #Europe: europe.pool.ntp.org #North America: north-america.pool.ntp.org -->
+        <NtpServer value="embms.jio.com"/>
+        <!-- Period of synchronization with the LTE modem time. -->
+        <TimeUpdatePeriod value="P1D"/>
+        <!-- Period to attempt synchronization with the LTE modem time in case of failure. -->
+        <CheckSyncPeriod value="PT15S"/>
+
+        <!-- Directory for file download. -->
+        <FileDownloadDirectory value="DownloadDir"/>
+        <!-- Live directory for MPD file, A/V file init files and A/V segments. -->
+        <LiveDirectory value="LiveDir"/>
+
+        <!-- FLUTE session Time out. -->
+        <FluteTimeOut value="PT30S"/>
+        <!-- Maximum available RAM size for FEC decoding process in MBytes. -->
+        <DecodeRAMLimit value="50"/>
+        <!-- Minimum amount of data in bytes before dump is performed. -->
+        <SafeDownloadThreshold value="0"/>
+        <!-- Maximum number of threads for file download. -->
+        <MaxThreadFileDownload value="10"/>
+
+        <!-- The time interval to check the middleware update availability. A Value 0 disables the update check function -->
+        <CheckUpdateInterval value="PT168H"/>
+        <!-- The Notification Interval to notify the app and further remind user when a middleware update is available. A value 0 disables the notification feature. -->
+        <NotificationInterval value="PT24H"/>
+
+        <!-- Boolean to indicate whether the DB should be on filesystem or in RAM. Default is "true" (filesystem) -->
+        <DatabaseOnFilesystem value="true"/>
+        <!-- Ignore FDT expiration. Default is "true" (FDT expiration ignored) -->
+        <IgnoreFDTExpiration value="true"/>
+    </GeneralParameters>
+
+    <!-- Application parameters -->
+    <ApplicationParameters>
+        <!-- true if only 1 application can be associated to a service class, false otherwise. -->
+        <ServiceClassUniqueApplication value="false"/>
+        <!-- Minimum delay between two successive register requests. -->
+        <ReregisterDelay value="PT2S"/>
+    </ApplicationParameters>
+
+    <!-- Boot configuration parameters -->
+    <BootConfigParameters>
+        <!-- Dynamic configuration update period -->
+        <InlineConfigurationUpdatePeriod value="P1D"/>
+        <!-- Dynamic configuration filename. -->
+        <InlineConfigurationFileName value="MMWConfigurationFile.xml"/>
+        <!-- Dynamic configuration file URL, MMW only, xml format. -->
+        <InlineConfigurationFileUrl value="http://172.17.12.143:8100/data/MMWConfigurationFile.xml"/>
+        <!-- Bootstrap file URL, Bootstrap only or multipart Bootstrap+MMWConfig -->
+        <BootstrapServerUrl value="http://mbmsbs.mnc&lt;MNC&gt;.mcc&lt;MCC&gt;.pub.3gppnetwork.org/bootstrap.multipart"/>
+        <!-- MANDATORY. Bootconfig service class -->
+        <BootconfigServiceClass value="Jio_exp"/>
+    </BootConfigParameters>
+
+    <!-- HTTP error parameters for File Repair, QoE, Unicast bootstrap -->
+    <HTTPParameters>
+        <!-- Use the APN 4G mobile connection for FileRepair and ReceptionReporting HTTP servers. -->
+        <UseMobileConnection value="true"/>
+        <!-- Number of HTTP retry on no server response. -->
+        <HTTPRetryAttempts value="3"/>
+        <!-- Retry period. -->
+        <HTTPRetryPeriod value="PT1M"/>
+        <!-- Maximum number of HTTP 308 redirection. -->
+        <HTTPRedirectionMaxNumber value="3"/>
+        <!-- Server connection timeout delay. -->
+        <HTTPConnectionTimeout value="PT10S"/>
+        <!-- Whether we should maintain a unique TCP connection for consumption report session. -->
+        <ConsumptionReportMaintainConnection value="false"/>
+    </HTTPParameters>
+
+    <!-- Control of eMBMS Modem -->
+    <BearerControl>
+        <!-- Broadcast Signal Strength Indicator notification period. -->
+        <BSSINotificationPeriod value="PT10S"/>
+        <!-- BSSI Signal strength threshold notification in dB. -->
+        <BSSINotificationThreshold value="10"/>
+        <!-- Signal Information notification period. -->
+        <SignalInformationNotificationPeriod value="PT10S"/>
+        <!-- Network interface address for Modem with Client/Server architecture. -->
+        <RemoteModemNetworkInterfaceAddress value=""/>
+        <!-- Network interface port for Modem with Client/Server architecture. -->
+        <RemoteModemNetworkInterfacePort value=""/>
+        <!-- Delay without modification of coverage status before notifying. -->
+        <CoverageStatusDelay value="PT2S"/>
+        <!-- Mifi Server Name -->
+        <MifiServerName value=""/>
+        <!-- UDP Port for sending AT Commands to the Mifi -->
+        <MifiCommandPort value=""/>
+        <!-- Enable Mifi. -->
+        <MifiEnable value="false"/>
+        <!-- Delay to check MiFi connection. -->
+        <WatchdogTimeout value="PT4S"/>
+        <!-- SIB15 timeout -->
+        <SIB15Timeout value="PT1S"/>
+        <!-- Mood TMGI Activation Period: between 1 and 15 minutes. 0 to disable the feature. -->
+        <MoodTMGIActivationPeriod value="PT1M"/>
+    </BearerControl>
+
+    <!-- Live Streaming parameters -->
+    <Streaming>
+        <!-- Maximum of simultaneous Live sessions. -->
+        <FluteMaxLiveSessions value="7"/>
+        <!-- MPD Notification threshold. -->
+        <MPDNotificationThreshold value="PT1S"/>
+        <!-- Maximum duration of the MSP's cache. -->
+        <MSPCacheDuration value="PT62S"/>
+        <!-- Duration of the MSP's cache (Pause / Resume feature). -->
+        <MSPCacheDurationBuffering value="PT62S"/>
+        <!-- Extra duration of the MSP's cache. -->
+        <MSPCacheExtraDuration value="PT2S"/>
+        <!-- Reception jitter compensation. -->
+        <ReceptionJitterCompensation value="PT0S"/>
+        <!-- Optional parameter. If set to true, the Time Shift Buffer Depth value is forced to its maximum value. -->
+        <ForceMaxTSBD value="true"/>
+        <!-- If set to true, the MSP generate the MPD, otherwise the metadata one is returned. -->
+        <MSPGenerateMPD value="true"/>
+        <!-- If set to true, the MSP rewrite the URLs of every SegmentTemplate of the MPD. -->
+        <SegmentTemplateURLRewrite value="true"/>
+        <!-- Add to the AST the (segment duration)*(@value). Default value is "0". Other known value "-2". -->
+        <ASTAdjustTimeInDuration value="0"/>
+        <!-- Prevent redirection if the segment is requested earlier than the segment play time minus this value. Set to 0 to redirect unconditionally -->
+        <RedirectionTimingTolerance value="PT0.5S"/>
+        <!-- Fixed duration for HLS segments -->
+        <SegmentDuration value="PT1S"/>
+        <!-- If set to true, the live is opened when a player does a http GET on the corresponding manifest. -->
+        <OpenLiveOnPlayerRequest value="false"/>
+    </Streaming>
+
+    <!-- Announcement parameters -->
+    <ServiceAnnouncement>
+        <!-- Check Announcement Service Validity.-->
+        <CheckServiceValidity value="false"/>
+        <!-- Metadata frequency update (check MD5). -->
+        <ServiceAnnouncementWakeUpDuration value="PT15M"/>
+        <!-- The URI of the interactive SA file. -->
+        <InteractiveServiceAnnouncementURL value=""/>
+    </ServiceAnnouncement>
+
+    <!-- Reception Reporting -->
+    <ReceptionReporting>
+        <!-- If set to true, reception reports will have a compact structure, otherwise a multipart structure will be used. -->
+        <CompactReport value="false"/>
+        <!-- If set to true, HTTP headers are duplicated in report content for non-standard report servers. -->
+        <DuplicateHeadersInContent value="false"/>
+    </ReceptionReporting>
+
+    <!-- File Download -->
+    <FileDownload>
+        <!-- Download time shift to add time margin to file schedule start time and end time. -->
+        <TimeShift value="PT2S"/>
+        <!-- Maximum size of the HTTP response for File Repair requests. This is the maximum memory allocated during File Repair HTTP Requests (in bytes). Default value is 3 Mbytes. Value 0 for no limit. -->
+        <MaximumFileRepairResponseSize value="0"/>
+    </FileDownload>
+
+    <!-- Debug Parameters -->
+    <DebugParameters>
+        <!-- Filter service list by SAI returned by the modem (default=true). Set to false in order to debug with modem/network not supporting SIB-15 -->
+        <ServiceListFilterBySAI value="true"/>
+        <!-- Enable application authentication. -->
+        <AppAuthenticationEnable value="false"/>
+        <!-- Enable bootstrap debug : if EnableBootstrapDebug parameter is set to true, local bootstrap is parsed instead of loading bootstrap from unicast. Default value is "false" (disabled) -->
+        <EnableBootstrapDebug value="false"/>
+        <!-- Force eMBMS coverage at MSP's start. -->
+        <MBMSAssumptionCoverage value="false"/>
+        <!-- Local & unicast announcement files -->
+        <Announcement>
+            <!-- Examples of unicast files. "url" and "fileURI" attributes are mandatory. -->
+            <!--UnicastFile url="https://usd.vdms.edgecastcdn.net/00BDAC/SA/ServiceAnnouncement.xml.gz" fileURI="URI0" MD5="orizecxsnvf=="/-->
+            <!-- Examples of local files. "path" and "fileURI" attributes are mandatory. -->
+            <!--LocalFile path="ServiceAnnouncement.xml" fileURI="URI" MD5="orizecxsnvf==" deleteFile="true"/-->
+            <!--LocalFile path="ServiceAnnouncement2.xml" fileURI="URI2" deleteFile="false"/-->
+            <!--LocalFile path="ServiceAnnouncement3.xml" fileURI="URI3"/-->
+        </Announcement>
+        <!-- Enable MD5 check for Live Streaming sessions. Default value is "false" (disabled) -->
+        <EnableLiveMD5Check value="false"/>
+        <!-- Use the local time for first synchronization. Debug value is "true". -->
+        <!-- This parameter allows testing in a network where there is no SIB16 and no NTP. -->
+        <UseLocalTimeForSynchronization value="true"/>
+        <!-- Enable Dumping the received Annoucement. Default value is "false" (disabled). Debug value is "true". -->
+        <DumpAnnouncementFile value="false"/>
+        <!-- Set mode for Raptor10 decoding "aggressive" (1) or "batterySaver" (2) -->
+        <Raptor10DecodingMode value="batterySaver"/>
+    </DebugParameters>
+</EwMSPConfig>
