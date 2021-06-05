@@ -1431,8 +1431,10 @@ configured:
 	spin_lock_irqsave(&mchan->chn_lock, irq_flags);
 	list_add_tail(&mdesc->node, &mchan->prepared);
 	spin_unlock_irqrestore(&mchan->chn_lock, irq_flags);
-	pr_err(DMA_TAG "DMA chan[%d] flag %ld configuration ok!\n",
-		mchan->chan_num, flags);
+
+	//pr_err(DMA_TAG "DMA chan[%d] flag %ld configuration ok!\n",
+	//	mchan->chan_num, flags);
+
 	return &mdesc->desc;
 }
 

@@ -52,7 +52,7 @@ static void swdispc_disable_te(struct dispc_context *ctx)
 	panel = ctx->panel;
 	pd = panel->pd;
 	pd->ops->disable_te(pd);
-	pr_info("TE disable\n");
+	//pr_info("TE disable\n");
 }
 
 static void swdispc_enable_te(struct dispc_context *ctx)
@@ -63,7 +63,7 @@ static void swdispc_enable_te(struct dispc_context *ctx)
 	panel = ctx->panel;
 	pd = panel->pd;
 	pd->ops->enable_te(pd);
-	pr_info("TE enable\n");
+	//pr_info("TE enable\n");
 }
 
 static u32 swdispc_get_version(struct dispc_context *ctx)
