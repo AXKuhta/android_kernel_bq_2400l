@@ -26,7 +26,7 @@
 #ifndef ZSTD_DEPS_COMMON
 #define ZSTD_DEPS_COMMON
 
-#include <linux/limits.h>
+#include <linux/types.h>
 #include <linux/stddef.h>
 
 #define ZSTD_memcpy(d,s,n) __builtin_memcpy((d),(s),(n))
