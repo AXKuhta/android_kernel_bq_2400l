@@ -357,11 +357,14 @@ static void sprd_spi_flip_layer(struct sprd_adf_hwlayer *hwlayer)
 			argb32_to_rgb16(panel, layer_vbase);
 		else
 			return;
-		pr_info("layer base %x bpp %d\n", layer_base, layer_bpp);
+
+		//pr_info("layer base %x bpp %d\n", layer_base, layer_bpp);
+
 		if (pframe)
 			exchange_pixels(pframe);
 		else
 			return;
+
 		sprd_refresh_xfer.tx_buf = pframe;
 	} else {
 		copy_to_pframe(layer_vbase, stride, line_bytes);
@@ -369,8 +372,10 @@ static void sprd_spi_flip_layer(struct sprd_adf_hwlayer *hwlayer)
 			exchange_pixels(pframe);
 		else
 			return;
+
 		sprd_refresh_xfer.tx_buf = pframe;
-		pr_info("layer base %x bpp %d\n", layer_base, layer_bpp);
+
+		//pr_info("layer base %x bpp %d\n", layer_base, layer_bpp);
 	}
 	spi_message_init(&sprd_refresh_msg);
 	spi->spi_complete.done = 1;
