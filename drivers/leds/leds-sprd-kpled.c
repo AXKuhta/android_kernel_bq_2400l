@@ -151,10 +151,6 @@ static void sprd_kpled_set_brightness(struct sprd_kpled *led)
 	if (brightness_level < led->brightness_min)
 		brightness_level = led->brightness_min;
 
-	//brightness_level = brightness_level/16;
-	brightness_level = brightness_level*180/255;
-	/*brightness steps = 16 */
-
 	if (led->run_mode == 1) {
 		regmap_update_bits(led->sprd_kpled_regmap,
 				   CTL_BASE_ANA_GLB + led->reg_kpled_ctrl0,
@@ -288,9 +284,9 @@ static struct sprd_kpled_platform_data *sprd_kpled_parse_dt(struct
 	pdata->chip_version = (enum sprd_pmic_kpled_type)(of_id->data);
 	PRINT_INFO("chip is %d\n", pdata->chip_version);
 	ret =
-	    of_property_read_u32(np, "brightness_max", &pdata->brightness_max);
+	    of_property_read_u32(np, "brightness_adjust_max", &pdata->brightness_max);
 	if (ret) {
-		PRINT_INFO("fail to get pdata->brightness_max\n");
+		PRINT_INFO("fail to get pdata->brightness_adjust_max\n");
 		goto fail;
 	}
 	ret =
