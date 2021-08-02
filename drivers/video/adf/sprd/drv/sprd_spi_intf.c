@@ -119,9 +119,9 @@ static int abgr32_to_rgb16(struct panel_info *panel, void *base)
 	uint16_t width, height;
 	uint16_t line_bytes;
 
-	width = panel->width;
-	height = panel->height;
-	line_bytes = (width * panel->bpp) / 8;
+	width = 240;
+	height = 320;
+	line_bytes = (width * 16) / 8;
 	if (first_alloc) {
 		pframe = kzalloc(line_bytes * height, GFP_KERNEL);
 		if (!pframe)
@@ -154,9 +154,9 @@ static int argb32_to_rgb16(struct panel_info *panel, void *base)
 	uint16_t width, height;
 	uint16_t line_bytes;
 
-	width = panel->width;
-	height = panel->height;
-	line_bytes = (width * panel->bpp) / 8;
+	width = 240;
+	height = 320;
+	line_bytes = (width * 16) / 8;
 	if (first_alloc) {
 		pframe = kzalloc(line_bytes * height, GFP_KERNEL);
 		if (!pframe)
@@ -186,7 +186,7 @@ static int copy_to_pframe(void *base, uint16_t stride, uint16_t line_bytes)
 	uint16_t height;
 
 	pbase = base;
-	height = spi->panel->height;
+	height = 320;
 	if (first_alloc) {
 		pframe = kzalloc(line_bytes * height, GFP_KERNEL);
 		if (!pframe)
@@ -209,8 +209,8 @@ static int exchange_pixels(void *base)
 	uint16_t *pbase;
 
 	pbase = (uint16_t *)base;
-	height = spi->panel->height;
-	width = spi->panel->width;
+	height = 320; // height == vactive
+	width = 240; // width == hactive
 
 	for (i = 0; i < height * width; i += 2)
 		swap(pbase[i], pbase[i+1]);
@@ -307,9 +307,9 @@ static int sprd_spi_flip_bg(void)
 	uint16_t width, height, line_bytes;
 
 	panel = spi->panel;
-	height = panel->height;
-	width = panel->width;
-	line_bytes = (width * panel->bpp) / 8;
+	height = 320;
+	width = 240;
+	line_bytes = (width * 16) / 8;
 	if (first_alloc) {
 		pframe = kzalloc(line_bytes * height, GFP_KERNEL);
 		if (!pframe)
@@ -341,11 +341,11 @@ static void sprd_spi_flip_layer(struct sprd_adf_hwlayer *hwlayer)
 	layer_bpp = adf_format_bpp(hwlayer->format);
 	rgbf = spi_rgb_ctrl(hwlayer->format);
 	panel = spi->panel;
-	height = panel->height;
-	width = panel->width;
+	height = 320;
+	width = 240;
 	layer_base = hwlayer->iova_plane[0];
 	layer_vbase = phys_to_virt(layer_base);
-	line_bytes = (width * panel->bpp) / 8;
+	line_bytes = (width * 16) / 8;
 	stride = hwlayer->pitch[0];
 
 	if (!layer_vbase)
