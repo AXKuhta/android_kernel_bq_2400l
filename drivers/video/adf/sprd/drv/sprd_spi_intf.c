@@ -212,8 +212,13 @@ static int exchange_pixels(void *base)
 	height = 320; // height == vactive
 	width = 240; // width == hactive
 
-	for (i = 0; i < height * width; i += 2)
-		swap(pbase[i], pbase[i+1]);
+	// Manually unrolled for slightly more perf (~0.75x time spent)
+	for (i = 0; i < height * width; i += 8) {
+		swap(pbase[i]  , pbase[i+1]);
+		swap(pbase[i+2], pbase[i+3]);
+		swap(pbase[i+4], pbase[i+5]);
+		swap(pbase[i+6], pbase[i+7]);
+	}
 
 	return 0;
 }
