@@ -103,7 +103,7 @@ ZSTD_compressBlock_fast_generic(
         const BYTE* match1 = base + matchIndex1;
         U32 offcode;
 
-#if defined(__aarch64__)
+#if defined(__aarch64__) || defined(__arm__)
         PREFETCH_L1(ip0+256);
 #endif
 

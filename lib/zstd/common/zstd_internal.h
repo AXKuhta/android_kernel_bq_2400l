@@ -282,7 +282,7 @@ void ZSTD_wildcopy(void* dst, const void* src, ptrdiff_t length, ZSTD_overlap_e 
          * one COPY16() in the first call. Then, do two calls per loop since
          * at that point it is more likely to have a high trip count.
          */
-#ifdef __aarch64__
+#if defined(__aarch64__) || defined(__arm__)
         do {
             COPY16(op, ip);
         }
